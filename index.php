@@ -192,6 +192,22 @@ $app_name = idx($app_info, 'name', '');
 	var directionDisplay;
 	var directionsService = new google.maps.DirectionsService();
 
+// Determine support for Geolocation
+if (navigator.geolocation) {
+    // Locate position
+    navigator.geolocation.getCurrentPosition(displayPosition, errorFunction);
+} else {
+    alert('It seems like Geolocation, which is required for this page, is not enabled in your browser. Please use a browser which supports it.');
+}
+
+// Success callback function
+var mylat = pos.coords.latitude;
+var mylong = pos.coords.longitude;
+
+// Error callback function
+function errorFunction(pos) {
+    alert('Error!');
+}
 
 
      function initialize() {
@@ -199,7 +215,7 @@ $app_name = idx($app_info, 'name', '');
 
 	     
         var myOptions = {
-          center: new google.maps.LatLng(42.0, -83.0),
+          center: new google.maps.LatLng(mylat, mylong),
           zoom: 8,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
@@ -276,22 +292,6 @@ function toggleBounce() {
 
 
 
-// Determine support for Geolocation
-if (navigator.geolocation) {
-    // Locate position
-    navigator.geolocation.getCurrentPosition(displayPosition, errorFunction);
-} else {
-    alert('It seems like Geolocation, which is required for this page, is not enabled in your browser. Please use a browser which supports it.');
-}
-
-// Success callback function
-var mylat = pos.coords.latitude;
-var mylong = pos.coords.longitude;
-
-// Error callback function
-function errorFunction(pos) {
-    alert('Error!');
-}
 </script>
 
 
