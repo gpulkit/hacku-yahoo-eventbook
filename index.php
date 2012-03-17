@@ -333,7 +333,7 @@ function toggleBounce() {
 
 
   <div>
-        <h3>List of events
+        <h3>
         <script type="text/javascript">
 	lat = 42.292905; longi = -83.716378;
 	loc = new google.maps.LatLng(lat,longi);
@@ -376,8 +376,8 @@ function toggleBounce() {
 			      	addMarker(loc,"'.$name.'",'.$lat.','.$long.',"'.$pic_big.'","'.$description.'",'.$start_time.','.$end_time.');
 			</script>';
 				
-			echo he($name);
-			echo "\n";
+			//echo he($name);
+			//echo "\n";
 		}
             }	 
 	 ?>
