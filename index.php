@@ -200,7 +200,7 @@ $app_name = idx($app_info, 'name', '');
           zoom: 8,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
-        var map = new google.maps.Map(document.getElementById("map_canvas"),
+            map = new google.maps.Map(document.getElementById("map_canvas"),
             myOptions);
       }
 
