@@ -205,6 +205,7 @@ function addMarker(loc, ev_name) {
       	var infowindow = new google.maps.InfoWindow({content: contentString});
 	google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker);});
 	markersArray.push(marker);
+	return marker
 }
 
 function showOverlays() {
@@ -277,8 +278,8 @@ function errorFunction(pos) {
         <script type="text/javascript">
 	lat = 42; longi=-83;
 	loc = new google.maps.LatLng(lat,longi);
-	addMarker(loc,"Current Location");
-	google.maps.event.addListener(marker, 'click', toggleBounce());
+	curr_position = addMarker(loc,"Current Location");
+	curr_position.setAnimation(google.maps.Animation.BOUNCE);
 	</script>
           <?php
             foreach ($events as $fid) {
