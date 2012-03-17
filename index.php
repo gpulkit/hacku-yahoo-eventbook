@@ -206,7 +206,7 @@ function addMarker(loc, ev_name)
 	var contentString = ev_name;
       	var infowindow = new google.maps.InfoWindow({content: contentString});
 
-	google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker); showPath(loc);});
+	google.maps.event.addListener(marker, 'click', function() {showPath(loc);});
 
 
 	markersArray.push(marker);
