@@ -189,7 +189,15 @@ $app_name = idx($app_info, 'name', '');
 	var map;	
 	var markersArray = [];
 	var listnerArray = [];
+	var directionDisplay;
+	var directionsService = new google.maps.DirectionsService();
+
+
+
      function initialize() {
+	directionsDisplay = new google.maps.DirectionsRenderer();
+
+	     
         var myOptions = {
           center: new google.maps.LatLng(42.0, -83.0),
           zoom: 8,
@@ -216,8 +224,8 @@ function addMarker(loc, ev_name)
 
 function showPath(){
 
-var directionsService = new google.maps.DirectionsService();
-var directionDisplay = new google.maps.DirectionsRenderer();
+directionDisplay = new google.maps.DirectionsRenderer();
+directionsService = new google.maps.DirectionsService();
 directionsDisplay.setMap(map);
 	var start = "42.0000, -83.0000";
 				var end = "45.0000, -84.0000";
