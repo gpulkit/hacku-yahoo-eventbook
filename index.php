@@ -227,8 +227,8 @@ directionsDisplay.setMap(map);
 					travelMode: google.maps.DirectionsTravelMode.DRIVING
 				};
 
-directionsService.route(request, function(response, status) {
-	if (status == google.maps.DirectionsStatus.OK) {
+directionsService.route(request, function(response, status1) {
+	if (status1 == google.maps.DirectionsStatus.OK) {
 		directionsDisplay.setDirections(response);
 	}
 });
