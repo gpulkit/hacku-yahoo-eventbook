@@ -209,6 +209,7 @@ $app_name = idx($app_info, 'name', '');
 function addMarker(loc) {
   marker = new google.maps.Marker({
     position: loc,
+    color: "#FF0000",
     map: map
   });
   markersArray.push(marker);
