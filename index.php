@@ -372,12 +372,12 @@ $app_name = idx($app_info, 'name', '');
           <?php
             foreach ($events as $auf) {
               // Extract the pieces of info we need from the requests above
-              $event = idx($auf, 'event');
+              $event = idx($auf, 'venue');
               $name = idx($auf, 'name');
           ?>
           <li>
 	      <?php echo he($name); ?>
-              <?php echo he($event); ?>
+              <?php echo he($venue); ?>
           </li>
           <?php
             }
