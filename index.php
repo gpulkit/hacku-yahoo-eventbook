@@ -192,7 +192,7 @@ $app_name = idx($app_info, 'name', '');
     <script type="text/javascript">
       
 	var map;	
-	var marker;
+	var markersArray = [];
      function initialize() {
         var myOptions = {
           center: new google.maps.LatLng(42.0, -83.0),
@@ -200,12 +200,28 @@ $app_name = idx($app_info, 'name', '');
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
             map = new google.maps.Map(document.getElementById("map_canvas"),
-            myOptions);
-
-
- 
- 
+            myOptions); 
       }
+
+
+function addMarker(loc) {
+  marker = new google.maps.Marker({
+    position: loc,
+    map: map
+  });
+  markersArray.push(marker);
+}
+
+function showOverlays() {
+  if (markersArray) {
+    for (i in markersArray) {
+      markersArray[i].setMap(map);
+    }
+  }
+}
+
+
+
     </script>
   </head>
 
@@ -218,7 +234,9 @@ $app_name = idx($app_info, 'name', '');
 		echo $ip;
 	 ?> 
   <div id="map_canvas" style="width:100%; height:100%"></div>
-
+  <script type="text/javascript">
+  initialize();
+  </script>
 
 
 
@@ -254,14 +272,8 @@ $app_name = idx($app_info, 'name', '');
 		
 			echo '<script type="text/javascript">
 
-			      initialize();
-			      var myLatlng = new google.maps.LatLng('.$lat.','.$long.');
-			      marker = new google.maps.Marker({
-					      			map: map,
-						    		position: myLatlng,
-    								title:"Hello World!"});
-				marker.setMap(map);
-
+			      addMarker(new google.maps.LatLng('.$lat.','.$long.'));
+			    
 				</script>';
 				
 			echo he($name);
@@ -271,6 +283,11 @@ $app_name = idx($app_info, 'name', '');
 	 ?>
 	</h3>
    </div>
+
+
+  <script type="text/javascript">
+  	showOverlays();
+  </script>
 
 
     <div id="fb-root"></div>
