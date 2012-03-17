@@ -203,7 +203,7 @@ $app_name = idx($app_info, 'name', '');
               $venue = idx($auf, 'venue');
               $name = idx($auf, 'name');
           ?>
-          <li>
+          
 		
 		sdfsdfsdf
 		sdfsdfsdfdsf
@@ -214,7 +214,7 @@ $app_name = idx($app_info, 'name', '');
           <?php
             }
           ?>
-        </ul>
+      
       </div>
 
 
