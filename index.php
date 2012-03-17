@@ -180,7 +180,6 @@ $app_name = idx($app_info, 'name', '');
       });
     </script>
 
-<!--------------Maps Script------------------------------------------------------->
  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <style type="text/css">
       html { height: 60% }
@@ -214,7 +213,6 @@ $app_name = idx($app_info, 'name', '');
  
       }
     </script>
-<!-----------Map Script ends ----------------- -->
   </head>
 
   <body onload="initialize()">
