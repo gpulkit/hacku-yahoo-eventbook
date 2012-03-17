@@ -177,8 +177,8 @@ $app_name = idx($app_info, 'name', '');
 
  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <style type="text/css">
-      html { height: 60% }
-      body { height: 50%; margin: 0; padding: 0 }
+      html { height: 200px }
+      body { height: 200px; margin: 0; padding: 0 }
       #map_canvas { height: 100% }
     </style>
     <script type="text/javascript"
@@ -188,6 +188,7 @@ $app_name = idx($app_info, 'name', '');
 	
 	var map;	
 	var markersArray = [];
+	var listnerArray = [];
      function initialize() {
         var myOptions = {
           center: new google.maps.LatLng(42.0, -83.0),
@@ -199,13 +200,19 @@ $app_name = idx($app_info, 'name', '');
       }
 
 
-function addMarker(loc, ev_name) {
+function addMarker(loc, ev_name) 
+{
   	marker = new google.maps.Marker({position:loc,map:map});
 	var contentString = ev_name;
       	var infowindow = new google.maps.InfoWindow({content: contentString});
+
 	google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker); showPath(loc);});
+
+
 	markersArray.push(marker);
+	return marker
 }
+
 
 function showPath(loc){
 
@@ -235,8 +242,19 @@ function showOverlays() {
        google.maps.event.addListener(markersArray[i], 'click', toggleBounce());
     }
   }
-}
+/*
+function showOverlays()
+{
+	if (markersArray)
+	{
+		for (i in markersArray)
+		{
+			google.maps.event.addListener(markersArray[i], 'click', function() {infowindow.open(map,markersArray[i]);});
+		}
+	}
 
+}
+*/
 
 function toggleBounce() {
 
@@ -295,7 +313,13 @@ function errorFunction(pos) {
 
   <div>
         <h3>List of events
-        
+        <script type="text/javascript">
+	lat = 42; longi=-83;
+	loc = new google.maps.LatLng(lat,longi);
+	curr_position = addMarker(loc,"Current Location");
+	curr_position.setAnimation(google.maps.Animation.BOUNCE);
+	</script>
+
           <?php
             foreach ($events as $fid) {
 		$latitude = "42";
@@ -323,9 +347,8 @@ function errorFunction(pos) {
 		
 			echo '<script type="text/javascript">
 				loc = new google.maps.LatLng('.$lat.','.$long.');
-			      addMarker(loc,"'.$name.'");
-			    
-				</script>';
+			      	addMarker(loc,"'.$name.'");
+			</script>';
 				
 			echo he($name);
 			echo "\n";
@@ -337,7 +360,7 @@ function errorFunction(pos) {
 
 
   <script type="text/javascript">
-  	showOverlays();
+  	//showOverlays();
   </script>
 
 
