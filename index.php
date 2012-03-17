@@ -252,11 +252,7 @@ $app_name = idx($app_info, 'name', '');
 		$name = idx($fid, 'name');
 		if(isset($long) and isset($lat) and ($long < ($longitude+$offset)) and ($long > ($longitude-$offset)) and ($lat < ($latitude+$offset)) and ($lat > ($latitude-$offset))) {
 	      	
-			echo "<script language=text/javascript>
-				setMarker();
-				sdfgdfgdfgdfg
-			      </script>";	
-		/*	
+				/*	
 			echo "<script language=javascript>
 
 			      var myLatlng = new google.maps.LatLng(42.0,-83.0);
@@ -275,6 +271,10 @@ $app_name = idx($app_info, 'name', '');
 	</h3>
    </div>
 
+	<script language=text/javascript>
+				setMarker();
+				sdfgdfgdfgdfg
+			      </script>	
 
 
     <div id="fb-root"></div>
