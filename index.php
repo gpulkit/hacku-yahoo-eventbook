@@ -203,12 +203,12 @@ $app_name = idx($app_info, 'name', '');
               // Extract the pieces of info we need from the requests above
               //$venue = idx($fid, 'venue');
               $name = idx($fid, 'eid');
-	      echo he($name);
+	      echo $name;
             }	 
 	 ?>
           
+		pulkit
 		
-		sdfsdfsdf
 		sdfsdfsdfdsf
 		
           
