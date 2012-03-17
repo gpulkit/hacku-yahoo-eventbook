@@ -242,6 +242,7 @@ function showOverlays() {
    //    google.maps.event.addListener(markersArray[i], 'click', toggleBounce());
     }
   }
+}  
 /*
 function showOverlays()
 {
