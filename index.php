@@ -188,6 +188,7 @@ $app_name = idx($app_info, 'name', '');
 	
 	var map;	
 	var markersArray = [];
+	var listnerArray = [];
      function initialize() {
         var myOptions = {
           center: new google.maps.LatLng(42.0, -83.0),
@@ -199,22 +200,24 @@ $app_name = idx($app_info, 'name', '');
       }
 
 
-function addMarker(loc, ev_name) {
+function addMarker(loc, ev_name) 
+{
   	marker = new google.maps.Marker({position:loc,map:map});
 	var contentString = ev_name;
       	var infowindow = new google.maps.InfoWindow({content: contentString});
-	google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker);});
 	markersArray.push(marker);
 	return marker
 }
 
-function showOverlays() {
-  if (markersArray) {
-    for (i in markersArray) {
-      //markersArray[i].setMap(map);
-       google.maps.event.addListener(markersArray[i], 'click', toggleBounce());
-    }
-  }
+function showOverlays()
+{
+	if (markersArray)
+	{
+		for (i in markersArray)
+		{
+			google.maps.event.addListener(markersArray[i], 'click', function() {infowindow.open(map,markersArray[i]);});
+		}
+	}
 }
 
 
@@ -281,6 +284,7 @@ function errorFunction(pos) {
 	curr_position = addMarker(loc,"Current Location");
 	curr_position.setAnimation(google.maps.Animation.BOUNCE);
 	</script>
+
           <?php
             foreach ($events as $fid) {
 		$latitude = "42";
@@ -308,9 +312,8 @@ function errorFunction(pos) {
 		
 			echo '<script type="text/javascript">
 				loc = new google.maps.LatLng('.$lat.','.$long.');
-			      addMarker(loc,"'.$name.'");
-			    
-				</script>';
+			      	addMarker(loc,"'.$name.'");
+			</script>';
 				
 			echo he($name);
 			echo "\n";
