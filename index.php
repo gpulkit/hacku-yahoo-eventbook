@@ -69,6 +69,22 @@ if ($user_id) {
     'method' => 'fql.query',
     'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
   ));
+
+$lat = "40";
+$long = "30";
+
+// using offset gives us a "square" on the map from where to search the events
+$offset = 0.4;
+
+$limit=10;
+
+
+
+
+
+  $events = $facebook->api(array('method' => 'fql.query',
+				 'query'  => 'SELECT pic_big, name, venue, location, start_time, eid FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND start_time > '. $created_time .' OR uid = me()) AND start_time > '. $created_time .' AND venue.longitude < \''. ($long+$offset) .'\' AND venue.latitude < \''. ($lat+$offset) .'\' AND venue.longitude > \''. ($long-$offset) .'\' AND venue.latitude > \''. ($lat-$offset) .'\' ORDER BY start_time ASC '.$limit
+
 }
 
 // Fetch the basic info of the app that they are using
@@ -171,6 +187,8 @@ $app_name = idx($app_info, 'name', '');
     <![endif]-->
   </head>
   <body>
+
+
     <div id="fb-root"></div>
     <script type="text/javascript">
       window.fbAsyncInit = function() {
