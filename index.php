@@ -81,7 +81,7 @@ $limit=10;
 
 
 
-  $events = $facebook->api(array('method' => 'fql.query','query' => 'SELECT uid FROM friend WHERE uid1=me()'));
+  $events = $facebook->api(array('method' => 'fql.query','query' => 'SELECT name, venue, location, start_time, eid FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid=me())));
 
 /*
   $events = $facebook->api(array('method' => 'fql.query',
