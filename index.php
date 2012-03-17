@@ -217,7 +217,7 @@ function errorFunction(pos) {
 
 	     
         var myOptions = {
-          center: pos.coords //new google.maps.LatLng(mylat,mylong),
+          center: new google.maps.LatLng("42.2708","-83.7263"),
           zoom: 8,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
