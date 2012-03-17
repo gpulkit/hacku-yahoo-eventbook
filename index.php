@@ -177,7 +177,7 @@ $app_name = idx($app_info, 'name', '');
  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <style type="text/css">
       html { height: 400px }
-      body { height: 400px; margin-left:auto; margin-right:auto; width: 900px; }
+      body { height: 400px; margin-left:auto; margin-right:auto; width: 900px; background: url('http://fc00.deviantart.net/fs71/f/2010/257/c/e/facebook___wallpaper_by_fox_future_media-d2yrb7j.png') no-repeat;}
       body #wrapper { background: url('http://aboutpranay.com/images/wrapper.png') repeat; padding: 10px; }
       #map_canvas { height: 100% }
     </style>
@@ -322,6 +322,9 @@ function toggleBounce() {
 		//$my_location = file_get_contents('http://api.ipinfodb.com/v3/ip-city/?key=e83cefbb1a1a08c7b2151f44c4464cab0ae503ee1935102f4160a5c753902432&ip='.$ip);
 	//	echo $ip;
 	 ?> 
+  <div id="top_banner" style="width:100%; height:100px; background: color('#db7');">
+  <div id="header" align="center" style="font-size:44px; font-weight:bold; color:#ddd; font-family:'Cambria';">EventBook</div>
+  </div>
   <div id="map_canvas" style="width:100%; height:100%"></div>
   <script type="text/javascript">
   initialize();
