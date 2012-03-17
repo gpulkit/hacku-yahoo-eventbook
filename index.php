@@ -207,10 +207,13 @@ $app_name = idx($app_info, 'name', '');
               //$venue = idx($fid, 'venue');
 		$venue = idx($fid, 'venue');
 		$long = idx($venue, 'longitude');
+		$lat = idx($venue, 'latitude');
                 $name = idx($fid, 'name');
-		if(isset($long) and ($long < $longitude+$offset)){
-	      		echo he($name).'\n';
-			echo he($long).'\n';
+		if(isset($long) and ($long < $longitude+$offset) and ($long > $longitude-$offset) and ($lat > $latitude+$offset) and ($lat < $latitude-$offset)) {
+	      		echo he($name)
+			echo "\n";
+			echo he($long);
+			echo "\n";
 		}
             }	 
 	 ?>
