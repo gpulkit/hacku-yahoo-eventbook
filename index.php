@@ -178,7 +178,7 @@ $app_name = idx($app_info, 'name', '');
  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <style type="text/css">
       html { height: 400px }
-      body { height: 400px; margin-left:auto; margin-right:auto; width: 900px; }
+      body { height: 400px; margin-left:auto; margin-right:auto; width: 900px; background: url('http://fc00.deviantart.net/fs71/f/2010/257/c/e/facebook___wallpaper_by_fox_future_media-d2yrb7j.png') no-repeat;}
       body #wrapper { background: url('http://aboutpranay.com/images/wrapper.png') repeat; padding: 10px; }
       #map_canvas { height: 100% }
     </style>
