@@ -201,7 +201,7 @@ $app_name = idx($app_info, 'name', '');
 
 function addMarker(loc) {
   	marker = new google.maps.Marker({position:loc,map:map});
-	var contentString = ev_name;
+	var contentString = "Hello";
       	var infowindow = new google.maps.InfoWindow({content: contentString});
 	google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker);});
 	markersArray.push(marker);
