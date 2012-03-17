@@ -185,8 +185,7 @@ $app_name = idx($app_info, 'name', '');
       src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA_XI29EdGJkjoZB9Q8Igxbtu9rQyX14ek&sensor=false">
     </script>
     <script type="text/javascript">
-	var contentString = 'Hello <strong>World</strong>!';
-      var infowindow = new google.maps.InfoWindow({content: contentString});
+	
 	var map;	
 	var markersArray = [];
      function initialize() {
@@ -200,12 +199,14 @@ $app_name = idx($app_info, 'name', '');
       }
 
 
-function addMarker(loc) {
+function addMarker(loc,event_name) {
   marker = new google.maps.Marker({
     position: loc,
     color: "#FFFFFF",
     map: map
   });
+var contentString = event_name;
+      var infowindow = new google.maps.InfoWindow({content: contentString});
 google.maps.event.addListener(marker, 'click', function() {
       infowindow.open(map,marker);
     });
@@ -307,7 +308,7 @@ function errorFunction(pos) {
 		
 			echo '<script type="text/javascript">
 
-			      addMarker(new google.maps.LatLng('.$lat.','.$long.'));
+			      addMarker(new google.maps.LatLng('.$lat.','.$long.'),'.$name.');
 			    
 				</script>';
 				
