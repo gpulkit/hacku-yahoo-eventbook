@@ -228,8 +228,9 @@ function errorFunction(pos) {
 function addMarker(loc, ev_name, lat, lon, pic_url, desc, start_time, end_time) 
 {
   	marker = new google.maps.Marker({position:loc,map:map});
-	
-	var contentString = ev_name+"<br>"+desc+"<br>"+start_time+"   "+end_time;
+	var s_d = new Date(start_time);
+	var e_d = new Date(end_time);
+	var contentString = ev_name+"<br>"+desc+"<br>"+s_d+"   "+e_d;
       	var infowindow = new google.maps.InfoWindow({content: contentString});
 
 	google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker); showPath(lat,lon);});
