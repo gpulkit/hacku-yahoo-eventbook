@@ -180,17 +180,34 @@ $app_name = idx($app_info, 'name', '');
       });
     </script>
 
-    <!--[if IE]>
-      <script type="text/javascript">
-        var tags = ['header', 'section'];
-        while(tags.length)
-          document.createElement(tags.pop());
-      </script>
-    <![endif]-->
-  </head>
-  <body>
+//------------Maps Script-------------------------------------------------------
+ <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map_canvas { height: 100% }
+    </style>
+    <script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA_XI29EdGJkjoZB9Q8Igxbtu9rQyX14ek&sensor=TRUE">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var myOptions = {
+          center: new google.maps.LatLng(42.0, -83.0),
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+            myOptions);
+      }
+    </script>
+//-------------Maps Script ends--------------------------------------------------
 
- <div>
+  </head>
+
+  <body onload="initialize()">
+  <div id="map_canvas" style="width:100%; height:100%"></div>
+  <div>
         <h3>List of events
         
           <?php
@@ -223,14 +240,8 @@ $app_name = idx($app_info, 'name', '');
 		}
             }	 
 	 ?>
-          
-		pulkit
-		
-		sdfsdfsdfdsf
-		
-          
-</h3>
-      </div>
+	</h3>
+   </div>
 
 
 
