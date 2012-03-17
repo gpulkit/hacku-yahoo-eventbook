@@ -70,11 +70,6 @@ if ($user_id) {
     'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
   ));
 
-$lat = "42";
-$long = "83";
-
-// using offset gives us a "square" on the map from where to search the events
-$offset = 0.4;
 
 
 
@@ -202,12 +197,18 @@ $app_name = idx($app_info, 'name', '');
         
           <?php
             foreach ($events as $fid) {
+		$latitude = "42";
+		$longitude = "83";
+
+// using offset gives us a "square" on the map from where to search the events
+		$offset = 0.4;
+
               // Extract the pieces of info we need from the requests above
               //$venue = idx($fid, 'venue');
 		$venue = idx($fid, 'venue');
 		$long = idx($venue, 'longitude');
                 $name = idx($fid, 'name');
-		if(isset($long)){
+		if(isset($long) && ($long < $longitude+$offset)){
 	      		echo he($name)."\n";
 			echo he($long)."\n";
 		}
