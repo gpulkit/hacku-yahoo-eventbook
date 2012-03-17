@@ -203,9 +203,30 @@ function addMarker(loc, ev_name) {
   	marker = new google.maps.Marker({position:loc,map:map});
 	var contentString = ev_name;
       	var infowindow = new google.maps.InfoWindow({content: contentString});
-	google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker);});
+	google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker); showPath(loc);});
 	markersArray.push(marker);
 }
+
+function showPath(loc){
+
+var directionsService = new google.maps.DirectionsService();
+var directionDisplay = new google.maps.DirectionsRenderer();
+directionsDisplay.setMap(map);
+	var start = "42.0000, -83.0000";
+				var end = "45.0000, -84.0000";
+				var request = {
+					origin:start,
+					destination:end,
+					travelMode: google.maps.DirectionsTravelMode.DRIVING
+				};
+
+directionsService.route(request, function(response, status) {
+	if (status == google.maps.DirectionsStatus.OK) {
+		directionsDisplay.setDirections(response);
+	}
+});
+}
+
 
 function showOverlays() {
   if (markersArray) {
