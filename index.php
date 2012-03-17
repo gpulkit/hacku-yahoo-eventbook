@@ -365,6 +365,47 @@ $app_name = idx($app_info, 'name', '');
           ?>
         </ul>
       </div>
+
+      <div class="list">
+        <h3>List of events</h3>
+        <ul class="friends">
+          <?php
+            foreach ($events as $auf) {
+              // Extract the pieces of info we need from the requests above
+              $event = idx($auf, 'event');
+              $name = idx($auf, 'name');
+          ?>
+          <li>
+	      <?php echo he($name); ?>
+              <?php echo he($event); ?>
+          </li>
+          <?php
+            }
+          ?>
+        </ul>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </section>
 
     <?php
