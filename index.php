@@ -209,7 +209,7 @@ $app_name = idx($app_info, 'name', '');
                 $name = idx($fid, 'name');
 		if(isset($long)){
 	      		echo he($name)."\n";
-			echo he($long);
+			echo he($long)."\n";
 		}
             }	 
 	 ?>
