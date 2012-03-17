@@ -230,14 +230,14 @@ function addMarker(loc, ev_name, lat, lon, pic_url, desc, start_time, end_time)
 	//var img = "<img src='"+pic_url+"'>";
 	//var img = new Image();
 	//img.src = pic_url;
-  	marker = new google.maps.Marker({position:loc,map:map,icon:pic_url});
+  	marker = new google.maps.Marker({position:loc,map:map});
 	var s_d = new Date(start_time*1000);
 	var e_d = new Date(end_time*1000);
 	var contentString = ev_name+"<br>"+desc+"<br>"+s_d.toDateString()+"  "+s_d.toTimeString()+"<br>"+e_d.toDateString()+"  "+e_d.toTimeString();
       	var infowindow = new google.maps.InfoWindow({content: contentString});
 
-	google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker); showPath(lat,lon);});
-
+	//google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker); showPath(lat,lon);});
+	google.maps.event.addListener(marker, 'click', function() {gMarkers[marker].openInfoWindowHtml(ex_name+"<br>"+s_d.toDateString());});
 	markersArray.push(marker);
 	return marker
 }
