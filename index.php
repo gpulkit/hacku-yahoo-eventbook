@@ -79,8 +79,9 @@ $offset = 5.0;
 
 
 
+  $events = $facebook->api(array('method' => 'fql.query','query' => 'SELECT name FROM user WHERE uid=me()'));
 
-  $events = $facebook->api(array('method' => 'fql.query','query' => 'SELECT name, venue, location, start_time, eid FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid=me())'));
+  //$events = $facebook->api(array('method' => 'fql.query','query' => 'SELECT name, venue, location, start_time, eid FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid=me())'));
 
 /*
   $events = $facebook->api(array('method' => 'fql.query',
@@ -200,7 +201,7 @@ $app_name = idx($app_info, 'name', '');
           <?php
             foreach ($events as $fid) {
               // Extract the pieces of info we need from the requests above
-              $venue = idx($fid, 'venue');
+              //$venue = idx($fid, 'venue');
               $name = idx($fid, 'name');
 	      echo he($name);
             }	 
