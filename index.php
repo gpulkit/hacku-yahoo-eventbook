@@ -317,7 +317,6 @@ function toggleBounce() {
   </head>
 
   <body onload="">
-  <div id="wrapper">	
 
 	<?php 
 	//	$ip = $_SERVER['REMOTE_ADDR'];
@@ -472,6 +471,6 @@ function toggleBounce() {
       }
     ?>
 
-    </div>
+
   </body>
 </html>
