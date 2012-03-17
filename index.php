@@ -202,7 +202,7 @@ $app_name = idx($app_info, 'name', '');
               // Extract the pieces of info we need from the requests above
               $venue = idx($auf, 'venue');
               $name = idx($auf, 'name');
-	      echo $name;
+	      echo he($name);
             }	 
 	 ?>
           
