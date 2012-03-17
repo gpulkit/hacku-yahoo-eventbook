@@ -74,7 +74,7 @@ $lat = "42";
 $long = "83";
 
 // using offset gives us a "square" on the map from where to search the events
-$offset = 5.0;
+$offset = 0.4;
 
 
 
