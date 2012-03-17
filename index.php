@@ -203,13 +203,7 @@ $app_name = idx($app_info, 'name', '');
             myOptions);
 
 
-	     var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
-			      marker = new google.maps.Marker({
-					      			map: map,
-						    		position: myLatlng,
-    								title:\"Hello World!\"});
-				marker.setMap(map);
-
+ 
  
       }
     </script>
@@ -224,6 +218,12 @@ $app_name = idx($app_info, 'name', '');
 		echo $my_location;
 	 ?> 
   <div id="map_canvas" style="width:100%; height:100%"></div>
+
+
+
+
+
+
   <div>
         <h3>List of events
         
@@ -251,8 +251,8 @@ $app_name = idx($app_info, 'name', '');
 		$name = idx($fid, 'name');
 		if(isset($long) and isset($lat) and ($long < ($longitude+$offset)) and ($long > ($longitude-$offset)) and ($lat < ($latitude+$offset)) and ($lat > ($latitude-$offset))) {
 	      	
-		/*			
-			echo "<script language=javascript>
+		
+			echo '<script type=\"text/javascript\">
 
 			      var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
 			      marker = new google.maps.Marker({
@@ -261,8 +261,8 @@ $app_name = idx($app_info, 'name', '');
     								title:\"Hello World!\"});
 				marker.setMap(map);
 
-				</script>";
-				*/
+				</script>';
+				
 			echo he($name);
 			echo "\n";
 		}
