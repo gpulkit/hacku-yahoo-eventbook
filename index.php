@@ -217,7 +217,7 @@ function addMarker(loc) {
 function showOverlays() {
   if (markersArray) {
     for (i in markersArray) {
-      markersArray[i].setMap(map);
+      //markersArray[i].setMap(map);
        google.maps.event.addListener(markersArray[i], 'click', toggleBounce(markersArray[i]));
     }
   }
