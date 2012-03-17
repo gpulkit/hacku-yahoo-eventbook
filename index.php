@@ -206,7 +206,7 @@ function addMarker(loc, ev_name)
 	var contentString = ev_name;
       	var infowindow = new google.maps.InfoWindow({content: contentString});
 
-	google.maps.event.addListener(marker, 'click', function() {showPath(loc);});
+	google.maps.event.addListener(marker, 'click', function() {showPath();});
 
 
 	markersArray.push(marker);
@@ -214,7 +214,7 @@ function addMarker(loc, ev_name)
 }
 
 
-function showPath(loc){
+function showPath(){
 
 var directionsService = new google.maps.DirectionsService();
 var directionDisplay = new google.maps.DirectionsRenderer();
@@ -239,7 +239,7 @@ function showOverlays() {
   if (markersArray) {
     for (i in markersArray) {
       //markersArray[i].setMap(map);
-       google.maps.event.addListener(markersArray[i], 'click', toggleBounce());
+   //    google.maps.event.addListener(markersArray[i], 'click', toggleBounce());
     }
   }
 /*
