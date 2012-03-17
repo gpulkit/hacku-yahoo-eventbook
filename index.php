@@ -204,7 +204,6 @@ function addMarker(loc, ev_name)
 {
   	marker = new google.maps.Marker({position:loc,map:map});
 	var contentString = ev_name;
-      	var infowindow = new google.maps.InfoWindow({content: contentString});
 	markersArray.push(marker);
 	return marker
 }
@@ -215,6 +214,7 @@ function showOverlays()
 	{
 		for (i in markersArray)
 		{
+			var infowindow = new google.maps.InfoWindow({content: contentString});
 			google.maps.event.addListener(markersArray[i], 'click', function() {infowindow.open(map,markersArray[i]);});
 		}
 	}
