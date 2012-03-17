@@ -230,7 +230,7 @@ function addMarker(loc, ev_name, lat, lon, pic_url, desc, start_time, end_time)
 	var img = "<img src='"+pic_url+"'>";
 	//var img = new Image();
 	//img.src = pic_url;
-  	marker = new google.maps.Marker({position:loc,map:map,icon:img});
+  	marker = new google.maps.Marker({position:loc,map:map});
 	var s_d = new Date(start_time);
 	var e_d = new Date(end_time);
 	var contentString = ev_name+"<br>"+desc+"<br>"+s_d+"   "+e_d;
