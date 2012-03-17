@@ -233,7 +233,7 @@ function addMarker(loc, ev_name, lat, lon, pic_url, desc, start_time, end_time)
   	marker = new google.maps.Marker({position:loc,map:map});
 	var s_d = new Date(start_time*1000);
 	var e_d = new Date(end_time*1000);
-	var contentString = '<img src=\''+pic_url+'\' height=\"30px\" width=\"40px\"/><div style="font-size:11px; float:right;"><b>'+ev_name+'</b><br>'+desc+'<br>'+s_d.toDateString()+'  '+s_d.toTimeString()+'<br>'+e_d.toDateString()+'  '+e_d.toTimeString()+'</div>';
+	var contentString = '<img src=\''+pic_url+'\' height=\"50px\" width=\"60px\" style="margin-right:10px;"/><div style="font-size:11px; float:right;"><span style=\"font-weight:bold;\">'+ev_name+'</span><br>'+desc+'<br>'+s_d.toDateString()+'  '+s_d.toTimeString()+'<br>'+e_d.toDateString()+'  '+e_d.toTimeString()+'</div>';
       	var infowindow = new google.maps.InfoWindow({content: contentString});
 
 	google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker); showPath(lat,lon);});
@@ -248,7 +248,7 @@ function showPath(lat,lon){
 directionDisplay = new google.maps.DirectionsRenderer();
 directionsService = new google.maps.DirectionsService();
 directionsDisplay.setMap(map);
-directionsDisplay.supressMarkers = true;
+directionsDisplay.suppressMarkers = true;
 	var start = "42.292905, -83.716378";
 				var end = new google.maps.LatLng(lat,lon);//"45.0000, -84.0000";
 			//	var start = new google.maps.LatLng(mylat,mylong);//"45.0000, -84.0000";
