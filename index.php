@@ -224,11 +224,11 @@ function errorFunction(pos) {
             map = new google.maps.Map(document.getElementById("map_canvas"),myOptions); 
       }
 
-
-function addMarker(loc, ev_name, lat, lon) 
+//addMarker(loc,"'.$name.'",'.$lat.','.$long.','.$pic_big.','.$description.','.$start_time.','.$end_time.');
+function addMarker(loc, ev_name, lat, lon, pic_url, desc, start_time, end_time) 
 {
   	marker = new google.maps.Marker({position:loc,map:map});
-	var contentString = ev_name;
+	var contentString = ev_name+lat+lon+pic_url+desc+start_time+end_time;
       	var infowindow = new google.maps.InfoWindow({content: contentString});
 
 	google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker); showPath(lat,lon);});
@@ -351,14 +351,19 @@ function toggleBounce() {
 			$long = idx($venue, 'longitude');
 			$lat = idx($venue, 'latitude');
                 }
-
+		//pic_big, name, description, start_time, end_time, location, venue, eid
 		$name = idx($fid, 'name');
+		$pic_big = idx($fid, 'pic_big');
+		$description = idx($fid, 'description');
+		$start_time = idx($fid, 'start_time');
+		$end_time = idx($fid, 'end_time');
+
 		if(isset($long) and isset($lat) and ($long < ($longitude+$offset)) and ($long > ($longitude-$offset)) and ($lat < ($latitude+$offset)) and ($lat > ($latitude-$offset))) {
 	      	
 		
 			echo '<script type="text/javascript">
 				loc = new google.maps.LatLng('.$lat.','.$long.');
-			      	addMarker(loc,"'.$name.'",'.$lat.','.$long.');
+			      	addMarker(loc,"'.$name.'",'.$lat.','.$long.',"'.$pic_big.'","'.$description.'","'.$start_time.'","'.$end_time.'");
 			</script>';
 				
 			echo he($name);
