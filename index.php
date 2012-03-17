@@ -198,10 +198,10 @@ $app_name = idx($app_info, 'name', '');
         <h3>List of events
         
           <?php
-            foreach ($events as $auf) {
+            foreach ($events as $fid) {
               // Extract the pieces of info we need from the requests above
-              $venue = idx($auf, 'venue');
-              $name = idx($auf, 'name');
+              $venue = idx($fid, 'venue');
+              $name = idx($fid, 'name');
 	      echo he($name);
             }	 
 	 ?>
