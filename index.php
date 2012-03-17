@@ -180,7 +180,6 @@ $app_name = idx($app_info, 'name', '');
       });
     </script>
 
-<!--------------Maps Script------------------------------------------------------->
  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <style type="text/css">
       html { height: 60% }
@@ -188,7 +187,7 @@ $app_name = idx($app_info, 'name', '');
       #map_canvas { height: 100% }
     </style>
     <script type="text/javascript"
-      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA_XI29EdGJkjoZB9Q8Igxbtu9rQyX14ek&sensor=true">
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA_XI29EdGJkjoZB9Q8Igxbtu9rQyX14ek&sensor=false">
     </script>
     <script type="text/javascript">
       
@@ -202,12 +201,18 @@ $app_name = idx($app_info, 'name', '');
         };
             map = new google.maps.Map(document.getElementById("map_canvas"),
             myOptions);
+
+
+	     var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+			      marker = new google.maps.Marker({
+					      			map: map,
+						    		position: myLatlng,
+    								title:\"Hello World!\"});
+				marker.setMap(map);
+
  
       }
     </script>
-<<<<<<< HEAD
-<!-- -----------Maps Script ends------------------------------------------------ -->
-
   </head>
 
   <body onload="initialize()">
@@ -245,7 +250,7 @@ $app_name = idx($app_info, 'name', '');
 		$name = idx($fid, 'name');
 		if(isset($long) and isset($lat) and ($long < ($longitude+$offset)) and ($long > ($longitude-$offset)) and ($lat < ($latitude+$offset)) and ($lat > ($latitude-$offset))) {
 	      	
-					
+		/*			
 			echo "<script language=javascript>
 
 			      var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
@@ -256,6 +261,7 @@ $app_name = idx($app_info, 'name', '');
 				marker.setMap(map);
 
 				</script>";
+				*/
 			echo he($name);
 			echo "\n";
 		}
