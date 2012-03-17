@@ -178,8 +178,8 @@ $app_name = idx($app_info, 'name', '');
  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <style type="text/css">
       html { height: 400px }
-      body { height: 400px; margin: 10,auto,auto,10; padding: 0;  }
-      #map_canvas { height: 100% 	background: url('http://aboutpranay.com/images/wrapper.png') repeat; padding: 10px;}
+      body { height: 400px; background: url('http://aboutpranay.com/images/wrapper.png') repeat; padding: 10px;  }
+      #map_canvas { height: 100% }
     </style>
     <script type="text/javascript"
       src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA_XI29EdGJkjoZB9Q8Igxbtu9rQyX14ek&sensor=false">
