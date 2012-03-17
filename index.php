@@ -202,6 +202,7 @@ $app_name = idx($app_info, 'name', '');
         };
             map = new google.maps.Map(document.getElementById("map_canvas"),
             myOptions);
+ 
       }
 
       function setMarker(){
@@ -217,8 +218,7 @@ $app_name = idx($app_info, 'name', '');
 
 
     </script>
-<!-------------Maps Script ends-------------------------------------------------->
-
+<!-----------Map Script ends ----------------- -->
   </head>
 
   <body onload="initialize()">
@@ -252,17 +252,16 @@ $app_name = idx($app_info, 'name', '');
 		$name = idx($fid, 'name');
 		if(isset($long) and isset($lat) and ($long < ($longitude+$offset)) and ($long > ($longitude-$offset)) and ($lat < ($latitude+$offset)) and ($lat > ($latitude-$offset))) {
 	      	
-				/*	
+					
 			echo "<script language=javascript>
 
 			      var myLatlng = new google.maps.LatLng(42.0,-83.0);
 			      marker = new google.maps.Marker({
 						    		position: myLatlng,
-								map : map, 	
     								title:\"Hello World!\"});
 				marker.setMap(map);
 
-				</script>";*/
+				</script>";
 			echo he($name);
 			echo "\n";
 		}
@@ -270,11 +269,6 @@ $app_name = idx($app_info, 'name', '');
 	 ?>
 	</h3>
    </div>
-
-	<script language=text/javascript>
-				setMarker();
-				sdfgdfgdfgdfg
-			      </script>	
 
 
     <div id="fb-root"></div>
