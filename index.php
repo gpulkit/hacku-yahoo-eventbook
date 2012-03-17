@@ -183,8 +183,8 @@ $app_name = idx($app_info, 'name', '');
 <!--------------Maps Script------------------------------------------------------->
  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <style type="text/css">
-      html { height: 100% }
-      body { height: 100%; margin: 0; padding: 0 }
+      html { height: 20% }
+      body { height: 50%; margin: 0; padding: 0 }
       #map_canvas { height: 100% }
     </style>
     <script type="text/javascript"
@@ -245,7 +245,7 @@ $app_name = idx($app_info, 'name', '');
 	      		
 			echo "<script language=javascript>
 
-			      var myLatlng = new google.maps.LatLng(42,-83);
+			      var myLatlng = new google.maps.LatLng(42.0,-83.0);
 			      var marker = new google.maps.Marker({
 						    		position: myLatlng,
     								title:\"Hello World!\"});
