@@ -78,10 +78,10 @@ $offset = 5.0;
 
 
 
-
+/*
   $events = $facebook->api(array('method' => 'fql.query','query' => 'SELECT eid FROM event_member WHERE uid=me()'));
-
-  //$events = $facebook->api(array('method' => 'fql.query','query' => 'SELECT name, venue, location, start_time, eid FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid=me())'));
+*/
+  $events = $facebook->api(array('method' => 'fql.query','query' => 'SELECT name, venue, location, start_time, eid FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid=me())'));
 
 /*
   $events = $facebook->api(array('method' => 'fql.query',
@@ -202,8 +202,8 @@ $app_name = idx($app_info, 'name', '');
             foreach ($events as $fid) {
               // Extract the pieces of info we need from the requests above
               //$venue = idx($fid, 'venue');
-              $name = idx($fid, 'eid');
-	      echo $name;
+              $name = idx($fid, 'name');
+	      echo he($name);
             }	 
 	 ?>
           
@@ -287,7 +287,7 @@ $app_name = idx($app_info, 'name', '');
       <?php } else { ?>
       <div>
         <h1>Welcome</h1>
-        <div class="fb-login-button" data-scope="user_likes,user_photos"></div>
+        <div class="fb-login-button" data-scope="user_likes,user_photos,user_events,friends_events"></div>
       </div>
       <?php } ?>
     </header>
