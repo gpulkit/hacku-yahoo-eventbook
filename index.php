@@ -76,7 +76,7 @@ $long = "30";
 // using offset gives us a "square" on the map from where to search the events
 $offset = 0.4;
 
-$limit=10;
+
 
 
 /*
