@@ -80,7 +80,7 @@ if ($user_id) {
 */
 
   $events = $facebook->api(array('method' => 'fql.query',
-				 'query'  => 'SELECT pic_big, name, venue, location, start_time, eid FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) OR uid = me())'));//  < \'88\''));//   \''.($long+$offset) .'\''));
+				 'query'  => 'SELECT pic_big, owner, name, description, start_time, end_time, location, venue, eid FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) OR uid = me())'));//  < \'88\''));//   \''.($long+$offset) .'\''));
 
 // AND venue.longitude < \''. ($long+$offset) .'\' AND venue.latitude < \''. ($lat+$offset) .'\' AND venue.longitude > \''. ($long-$offset) .'\' AND venue.latitude > \''. ($lat-$offset) .'\' ORDER BY start_time ASC '));
 
@@ -198,7 +198,7 @@ $app_name = idx($app_info, 'name', '');
           <?php
             foreach ($events as $fid) {
 		$latitude = "42";
-		$longitude = "83";
+		$longitude = "-83";
 
 // using offset gives us a "square" on the map from where to search the events
 		$offset = 0.4;
