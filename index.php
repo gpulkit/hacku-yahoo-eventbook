@@ -274,7 +274,11 @@ function errorFunction(pos) {
 
   <div>
         <h3>List of events
-        
+        <script type="text/javascript">
+	lat = 42; longi=-83;
+	loc = new google.maps.LatLng(lat,longi);
+	addMarker(loc,"Current Location");
+	</script>
           <?php
             foreach ($events as $fid) {
 		$latitude = "42";
