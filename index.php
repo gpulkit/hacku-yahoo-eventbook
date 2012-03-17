@@ -191,7 +191,10 @@ $app_name = idx($app_info, 'name', '');
       src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA_XI29EdGJkjoZB9Q8Igxbtu9rQyX14ek&sensor=true">
     </script>
     <script type="text/javascript">
-      function initialize() {
+      
+	var map;	
+
+     function initialize() {
         var myOptions = {
           center: new google.maps.LatLng(42.0, -83.0),
           zoom: 8,
@@ -200,8 +203,11 @@ $app_name = idx($app_info, 'name', '');
         var map = new google.maps.Map(document.getElementById("map_canvas"),
             myOptions);
       }
+
+            
+		
 	
-	});
+
 
     </script>
 <!-------------Maps Script ends-------------------------------------------------->
