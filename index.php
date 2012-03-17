@@ -199,7 +199,7 @@ $app_name = idx($app_info, 'name', '');
       }
 
 
-function addMarker(loc,ev_name) {
+function addMarker(loc) {
   	marker = new google.maps.Marker({position:loc,map:map});
 	var contentString = ev_name;
       	var infowindow = new google.maps.InfoWindow({content: contentString});
@@ -302,7 +302,7 @@ function errorFunction(pos) {
 		
 			echo '<script type="text/javascript">
 				loc = new google.maps.LatLng('.$lat.','.$long.');
-			      addMarker(loc,'.$name.');
+			      addMarker(loc);
 			    
 				</script>';
 				
