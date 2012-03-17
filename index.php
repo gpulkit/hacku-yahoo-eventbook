@@ -65,24 +65,9 @@ if ($user_id) {
 
   // Here is an example of a FQL call that fetches all of your friends that are
   // using this app
-
   $app_using_friends = $facebook->api(array(
     'method' => 'fql.query',
     'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
-  ));
-
-  $lat = "40";
-  $long = "30";
-
-  // using offset gives us a "square" on the map from where to search the events
-  $offset = 0.4;
-
-  $events = $facebook->api(array(
-    'method' => 'fql.query',
-    'query' => 
-
-'SELECT pic_big, name, venue, location, start_time, eid FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND start_time > '. $created_time .' OR uid = me()) AND start_time > '. $created_time .' AND venue.longitude < \''. ($long+$offset) .'\' AND venue.latitude < \''. ($lat+$offset) .'\' AND venue.longitude > \''. ($long-$offset) .'\' AND venue.latitude > \''. ($lat-$offset) .'\' ORDER BY start_time ASC'
-
   ));
 }
 
@@ -186,12 +171,6 @@ $app_name = idx($app_info, 'name', '');
     <![endif]-->
   </head>
   <body>
-  
-
-
-
-
-
     <div id="fb-root"></div>
     <script type="text/javascript">
       window.fbAsyncInit = function() {
@@ -366,49 +345,6 @@ $app_name = idx($app_info, 'name', '');
           ?>
         </ul>
       </div>
-
-      <div class="list">
-        <h3>List of events</h3>
-        <ul class="friends">
-          <?php
-            foreach ($events as $auf) {
-              // Extract the pieces of info we need from the requests above
-              $venue = idx($auf, 'venue');
-              $name = idx($auf, 'name');
-          ?>
-          <li>
-              <?php echo he($name); 
-		    echo he($venue);
-		?>
-            </a>
-          </li>
-          <?php
-            }
-          ?>
-        </ul>
-      </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </section>
 
     <?php
