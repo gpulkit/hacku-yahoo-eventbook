@@ -178,7 +178,8 @@ $app_name = idx($app_info, 'name', '');
  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <style type="text/css">
       html { height: 400px }
-      body { height: 400px; margin-left:auto; margin-right:auto; width: 1000px; background: url('http://aboutpranay.com/images/wrapper.png') repeat; padding: 10px;  }
+      body { height: 400px; margin-left:auto; margin-right:auto; width: 900px; }
+      body #wrapper { background: url('http://aboutpranay.com/images/wrapper.png') repeat; padding: 10px; }
       #map_canvas { height: 100% }
     </style>
     <script type="text/javascript"
@@ -218,7 +219,7 @@ function errorFunction(pos) {
 	
         var myOptions = {
           center: new google.maps.LatLng("42.292905","-83.716378"),
-          zoom: 10,
+          zoom: 15,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 	
@@ -316,7 +317,7 @@ function toggleBounce() {
   </head>
 
   <body onload="">
-  	
+  <div id="wrapper">	
 
 	<?php 
 	//	$ip = $_SERVER['REMOTE_ADDR'];
@@ -471,6 +472,6 @@ function toggleBounce() {
       }
     ?>
 
-   
+    </div>
   </body>
 </html>
