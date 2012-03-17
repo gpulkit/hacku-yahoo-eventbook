@@ -211,6 +211,7 @@ $app_name = idx($app_info, 'name', '');
 				$location = $data->{'location'};	
 				$long = $location->{'longitude'};
 				$lat = $location->{'latitude'};
+				echo $lat;
 			}
 		}else{
 
