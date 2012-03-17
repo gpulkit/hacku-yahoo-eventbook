@@ -201,10 +201,10 @@ if (navigator.geolocation) {
 }
 
 // Success callback function
-var mylat = pos.coords.latitude;
-var mylong = pos.coords.longitude;
-mylat = "42.2708";
-mylong = "-83.7263";
+//var mylat = pos.coords.latitude;
+//var mylong = pos.coords.longitude;
+var mylat = 42.2708;
+var mylong = -83.7263;
 
 // Error callback function
 function errorFunction(pos) {
