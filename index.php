@@ -219,13 +219,13 @@ function showOverlays() {
   if (markersArray) {
     for (i in markersArray) {
       //markersArray[i].setMap(map);
-       google.maps.event.addListener(markersArray[i], 'click', toggleBounce(markersArray[i]));
+       google.maps.event.addListener(markersArray[i], 'click', toggleBounce());
     }
   }
 }
 
 
-function toggleBounce(marker) {
+function toggleBounce() {
 
   if (marker.getAnimation() != null) {
     marker.setAnimation(null);
