@@ -180,7 +180,7 @@ $app_name = idx($app_info, 'name', '');
       });
     </script>
 
-//------------Maps Script-------------------------------------------------------
+<!--------------Maps Script------------------------------------------------------->
  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <style type="text/css">
       html { height: 100% }
@@ -200,8 +200,11 @@ $app_name = idx($app_info, 'name', '');
         var map = new google.maps.Map(document.getElementById("map_canvas"),
             myOptions);
       }
+	
+	});
+
     </script>
-//-------------Maps Script ends--------------------------------------------------
+<!-------------Maps Script ends-------------------------------------------------->
 
   </head>
 
@@ -233,7 +236,17 @@ $app_name = idx($app_info, 'name', '');
 
 		$name = idx($fid, 'name');
 		if(isset($long) and isset($lat) and ($long < ($longitude+$offset)) and ($long > ($longitude-$offset)) and ($lat < ($latitude+$offset)) and ($lat > ($latitude-$offset))) {
-	      		echo he($name);
+	      		
+			echo "<script language=javascript>
+
+			      var myLatlng = new google.maps.LatLng(42,-83);
+			      var marker = new google.maps.Marker({
+						    		position: myLatlng,
+    								title:"Hello World!"});
+				marker.setMap(map);
+
+				</script>";
+			echo he($name);
 			echo "\n";
 			echo he($long);
 			echo "\n";
