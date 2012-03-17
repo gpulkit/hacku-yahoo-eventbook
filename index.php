@@ -202,14 +202,14 @@ $app_name = idx($app_info, 'name', '');
             map = new google.maps.Map(document.getElementById("map_canvas"),
             myOptions);
 
-/*
+
 	     var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
 			      marker = new google.maps.Marker({
 					      			map: map,
 						    		position: myLatlng,
     								title:\"Hello World!\"});
 				marker.setMap(map);
-*/
+
  
       }
     </script>
