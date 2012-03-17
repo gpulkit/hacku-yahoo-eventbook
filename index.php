@@ -183,7 +183,7 @@ $app_name = idx($app_info, 'name', '');
 <!--------------Maps Script------------------------------------------------------->
  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <style type="text/css">
-      html { height: 20% }
+      html { height: 30% }
       body { height: 50%; margin: 0; padding: 0 }
       #map_canvas { height: 100% }
     </style>
