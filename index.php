@@ -249,6 +249,7 @@ function showOverlays()
 	{
 		for (i in markersArray)
 		{
+			var infowindow = new google.maps.InfoWindow({content: contentString});
 			google.maps.event.addListener(markersArray[i], 'click', function() {infowindow.open(map,markersArray[i]);});
 		}
 	}
