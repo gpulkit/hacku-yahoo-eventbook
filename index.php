@@ -349,7 +349,7 @@ $app_name = idx($app_info, 'name', '');
         </ul>
       </div>
 
-      <div class="list">
+      <div>
         <h3>Friends using this app</h3>
         <ul class="friends">
           <?php
