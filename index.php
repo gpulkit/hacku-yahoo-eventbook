@@ -209,7 +209,8 @@ $app_name = idx($app_info, 'name', '');
     </script>
   </head>
 
-  <body onload="initialize()">
+  <body onload="">
+  	
 
 	<?php 
 		$ip = $_SERVER['REMOTE_ADDR'];
