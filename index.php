@@ -236,7 +236,8 @@ function addMarker(loc, ev_name, lat, lon, pic_url, desc, start_time, end_time)
 	var contentString = ev_name+"<br>"+desc+"<br>"+s_d.toDateString()+"  "+s_d.toTimeString()+"<br>"+e_d.toDateString()+"  "+e_d.toTimeString();
       	var infowindow = new google.maps.InfoWindow({content: contentString});
 
-	google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker); showPath(lat,lon);});
+	//google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker); showPath(lat,lon);});
+	google.maps.event.addListener(marker, 'click', function() {marker.openInfoWindowHtml("<html><body>"+ex_name+"<br>"+s_d.toDateString()+"</body></html>");});
 	markersArray.push(marker);
 	return marker
 }
