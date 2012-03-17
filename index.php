@@ -194,6 +194,30 @@ $app_name = idx($app_info, 'name', '');
   </head>
   <body>
 
+ <div>
+        <h3>List of events
+        
+          <?php
+            foreach ($events as $auf) {
+              // Extract the pieces of info we need from the requests above
+              $venue = idx($auf, 'venue');
+              $name = idx($auf, 'name');
+          ?>
+          <li>
+		
+		sdfsdfsdf
+		sdfsdfsdfdsf
+	      <?php echo he($name); ?>
+		
+          
+</h3>
+          <?php
+            }
+          ?>
+        </ul>
+      </div>
+
+
 
     <div id="fb-root"></div>
     <script type="text/javascript">
@@ -370,31 +394,7 @@ $app_name = idx($app_info, 'name', '');
         </ul>
       </div>
 
-      <div class="list">
-        <h3>List of events
-        
-          <?php
-            foreach ($events as $auf) {
-              // Extract the pieces of info we need from the requests above
-              $venue = idx($auf, 'venue');
-              $name = idx($auf, 'name');
-          ?>
-          <li>
-		
-		sdfsdfsdf
-		sdfsdfsdfdsf
-	      <?php echo he($name); ?>
-		
-          
-</h3>
-          <?php
-            }
-          ?>
-        </ul>
-      </div>
-
-
-
+     
 
 
 
