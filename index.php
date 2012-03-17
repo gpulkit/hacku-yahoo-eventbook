@@ -222,7 +222,7 @@ $app_name = idx($app_info, 'name', '');
   </head>
 
   <body onload="initialize()">
-< HEAD
+
 	<?php 
 		//Gets the IP address
  		$ip = getenv("REMOTE_ADDR") ;  		
