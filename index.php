@@ -197,12 +197,8 @@ $app_name = idx($app_info, 'name', '');
             foreach ($events as $fid) {
 		$latitude = "42";
 		$longitude = "-83";
-
-// using offset gives us a "square" on the map from where to search the events
 		$offset = 1.0;
 
-              // Extract the pieces of info we need from the requests above
-              //$venue = idx($fid, 'venue');
 		$venue = idx($fid, 'venue');
 		if($id = idx($venue, 'id')){
 			$url = 'http://graph.facebook.com/'.$id;
@@ -211,11 +207,6 @@ $app_name = idx($app_info, 'name', '');
 				$location = $data->{'location'};	
 				$long = $location->{'longitude'};
 				$lat = $location->{'latitude'};
-				echo $lat;
-				echo "\n";
-				echo $long;
-			
-				echo "\n";
 			}
 		}else{
 
