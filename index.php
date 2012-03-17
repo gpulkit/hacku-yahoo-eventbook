@@ -70,15 +70,17 @@ if ($user_id) {
     'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
   ));
 
-/*
+
   $events = $facebook->api(array('method' => 'fql.query',
 				 'query'  => 'SELECT pic_big, name, description, start_time, end_time, location, venue, eid FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) OR uid = me())'));//  < \'88\''));//   \''.($long+$offset) .'\''));
-*/
 
 
+/*
 
   $events = $facebook->api(array('method' => 'fql.query',
 				 'query'  => 'SELECT pic_big, name, description, start_time, end_time, location, venue, eid FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid = me())'));//  < \'88\''));//   \''.($long+$offset) .'\''));
+*/
+
 
 // AND venue.longitude < \''. ($long+$offset) .'\' AND venue.latitude < \''. ($lat+$offset) .'\' AND venue.longitude > \''. ($long-$offset) .'\' AND venue.latitude > \''. ($lat-$offset) .'\' ORDER BY start_time ASC '));
 
