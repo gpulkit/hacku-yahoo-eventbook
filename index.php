@@ -380,10 +380,11 @@ $app_name = idx($app_info, 'name', '');
               $name = idx($auf, 'name');
           ?>
           <li>
+		<h3>
 		sdfsdfsdf
 		sdfsdfsdfdsf
 	      <?php echo he($name); ?>
-              <?php echo he($venue); ?>
+		</h3>
           </li>
           <?php
             }
