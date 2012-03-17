@@ -213,16 +213,7 @@ $app_name = idx($app_info, 'name', '');
   <body onload="initialize()">
 
 	<?php 
-		//Gets the IP address
- 		$ip = getenv("REMOTE_ADDR"); 
-		if (getenv("HTTP_CLIENT_IP")) 
-			$ip = getenv("HTTP_CLIENT_IP"); 
-		else if(getenv("HTTP_X_FORWARDED_FOR")) 
-			$ip = getenv("HTTP_X_FORWARDED_FOR"); 
-		else if(getenv("REMOTE_ADDR")) 
-			$ip = getenv("REMOTE_ADDR"); 
-		else 
-			$ip = "UNKNOWN";
+		$ip = $_SERVER['REMOTE_ADDR'];
 		$my_location = file_get_contents('http://api.ipinfodb.com/v3/ip-city/?key=e83cefbb1a1a08c7b2151f44c4464cab0ae503ee1935102f4160a5c753902432&ip='.$ip);
 		echo $my_location;
 	 ?> 
