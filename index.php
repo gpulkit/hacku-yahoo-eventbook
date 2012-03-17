@@ -206,9 +206,16 @@ $app_name = idx($app_info, 'name', '');
               // Extract the pieces of info we need from the requests above
               //$venue = idx($fid, 'venue');
 		$venue = idx($fid, 'venue');
-		$long = idx($venue, 'longitude');
-		$lat = idx($venue, 'latitude');
-                $name = idx($fid, 'name');
+		if($id = idx($venue, 'id')){
+			$long = idx($id, 'longitude');
+			$lat = idx($id, 'latitude');
+		}else{
+
+			$long = idx($venue, 'longitude');
+			$lat = idx($venue, 'latitude');
+                }
+
+		$name = idx($fid, 'name');
 		if(isset($long) and isset($lat) and ($long < $longitude+$offset) and ($long > $longitude-$offset) and ($lat > $latitude+$offset) and ($lat < $latitude-$offset)) {
 	      		echo he($name);
 			echo "\n";
