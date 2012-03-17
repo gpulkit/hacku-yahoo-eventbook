@@ -123,6 +123,8 @@ $app_name = idx($app_info, 'name', '');
           console.log('The response was', response);
         }
       }
+	
+
 
       $(function(){
         // Set up so we handle click on the buttons
@@ -183,7 +185,7 @@ $app_name = idx($app_info, 'name', '');
       src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA_XI29EdGJkjoZB9Q8Igxbtu9rQyX14ek&sensor=false">
     </script>
     <script type="text/javascript">
-      
+      var infowindow = new google.maps.InfoWindow({content: contentString});
 	var map;	
 	var markersArray = [];
      function initialize() {
@@ -192,8 +194,8 @@ $app_name = idx($app_info, 'name', '');
           zoom: 8,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
-            map = new google.maps.Map(document.getElementById("map_canvas"),
-            myOptions); 
+	
+            map = new google.maps.Map(document.getElementById("map_canvas"),myOptions); 
       }
 
 
@@ -203,6 +205,9 @@ function addMarker(loc) {
     color: "#FFFFFF",
     map: map
   });
+google.maps.event.addListener(marker, 'click', function() {
+      infowindow.open(map,marker);
+    });
   markersArray.push(marker);
 }
 
@@ -258,9 +263,9 @@ function errorFunction(pos) {
   	
 
 	<?php 
-		$ip = $_SERVER['REMOTE_ADDR'];
+	//	$ip = $_SERVER['REMOTE_ADDR'];
 		//$my_location = file_get_contents('http://api.ipinfodb.com/v3/ip-city/?key=e83cefbb1a1a08c7b2151f44c4464cab0ae503ee1935102f4160a5c753902432&ip='.$ip);
-		echo $ip;
+	//	echo $ip;
 	 ?> 
   <div id="map_canvas" style="width:100%; height:100%"></div>
   <script type="text/javascript">
