@@ -231,7 +231,7 @@ function addMarker(loc, ev_name, lat, lon)
 	var contentString = ev_name;
       	var infowindow = new google.maps.InfoWindow({content: contentString});
 
-	google.maps.event.addListener(marker, 'click', function() {showPath(lat,lon);});
+	google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker); showPath(lat,lon);});
 
 	markersArray.push(marker);
 	return marker
