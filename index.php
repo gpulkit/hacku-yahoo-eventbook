@@ -203,8 +203,7 @@ if (navigator.geolocation) {
 // Success callback function
 //var mylat = pos.coords.latitude;
 //var mylong = pos.coords.longitude;
-var mylat = 42.2708;
-var mylong = -83.7263;
+
 
 // Error callback function
 function errorFunction(pos) {
@@ -326,7 +325,7 @@ function toggleBounce() {
   <div>
         <h3>List of events
         <script type="text/javascript">
-	lat = 42; longi=-83;
+	lat = 42.292905; longi = -83.716378;
 	loc = new google.maps.LatLng(lat,longi);
 	curr_position = addMarker(loc,"Current Location");
 	curr_position.setAnimation(google.maps.Animation.BOUNCE);
