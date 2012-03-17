@@ -215,9 +215,9 @@ function errorFunction(pos) {
      function initialize() {
 	directionsDisplay = new google.maps.DirectionsRenderer();
 
-	     
+	
         var myOptions = {
-          center: new google.maps.LatLng("42.2708","-83.7263"),
+          center: new google.maps.LatLng("42.292905","-83.716378"),
           zoom: 8,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
@@ -244,7 +244,7 @@ function showPath(lat,lon){
 directionDisplay = new google.maps.DirectionsRenderer();
 directionsService = new google.maps.DirectionsService();
 directionsDisplay.setMap(map);
-	var start = "42.2708, -83.7263";
+	var start = "42.292905, -83.716378";
 				var end = new google.maps.LatLng(lat,lon);//"45.0000, -84.0000";
 			//	var start = new google.maps.LatLng(mylat,mylong);//"45.0000, -84.0000";
 				var request = {
