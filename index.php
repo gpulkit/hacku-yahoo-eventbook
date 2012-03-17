@@ -252,13 +252,13 @@ $app_name = idx($app_info, 'name', '');
 		if(isset($long) and isset($lat) and ($long < ($longitude+$offset)) and ($long > ($longitude-$offset)) and ($lat < ($latitude+$offset)) and ($lat > ($latitude-$offset))) {
 	      	
 		
-			echo '<script type=\"text/javascript\">
+			echo '<script type="text/javascript">
 
 			      var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
 			      marker = new google.maps.Marker({
 					      			map: map,
 						    		position: myLatlng,
-    								title:\"Hello World!\"});
+    								title:"Hello World!"});
 				marker.setMap(map);
 
 				</script>';
