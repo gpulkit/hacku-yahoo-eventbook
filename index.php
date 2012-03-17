@@ -249,6 +249,7 @@ $app_name = idx($app_info, 'name', '');
 
 			      var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
 			      marker = new google.maps.Marker({
+					      			map: map,
 						    		position: myLatlng,
     								title:\"Hello World!\"});
 				marker.setMap(map);
