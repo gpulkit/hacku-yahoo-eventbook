@@ -230,7 +230,7 @@ function addMarker(loc, ev_name, lat, lon, pic_url, desc, start_time, end_time)
 	var img = "<img src='"+pic_url+"'>";
 	//var img = new Image();
 	//img.src = pic_url;
-  	marker = new google.maps.Marker({position:loc,map:map});
+  	marker = new google.maps.Marker({position:loc,map:map,icon:pic_url});
 	var s_d = new Date(start_time);
 	var e_d = new Date(end_time);
 	var contentString = ev_name+"<br>"+desc+"<br>"+s_d+"   "+e_d;
@@ -425,11 +425,7 @@ function toggleBounce() {
       <p id="picture" style="background-image: url(https://graph.facebook.com/<?php echo he($user_id); ?>/picture?type=normal)"></p>
 
       <div>
-        <h1>Welcome man, <strong><?php echo he(idx($basic, 'name')); ?></strong></h1>
-        <p class="tagline">
-          This is your app
-          <a href="<?php echo he(idx($app_info, 'link'));?>" target="_top"><?php echo he($app_name); ?></a>
-        </p>
+        <h1>Welcome, <strong><?php echo he(idx($basic, 'name')); ?></strong></h1>
 
         <div id="share-app">
           <p>Share your app:</p>
