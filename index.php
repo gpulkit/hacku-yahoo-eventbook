@@ -186,7 +186,7 @@ $app_name = idx($app_info, 'name', '');
     <![endif]-->
   </head>
   <body>
-  <?php
+  
 
 
 
