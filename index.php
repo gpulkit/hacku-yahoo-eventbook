@@ -231,7 +231,7 @@ directionsDisplay.setMap(map);
 				var request = {
 					origin:start,
 					destination:end,
-					travelMode: goiogle.maps.DirectionsTravelMode.DRIVING
+					travelMode: google.maps.DirectionsTravelMode.DRIVING
 				};
 
 directionsService.route(request, function(response, status1) {
