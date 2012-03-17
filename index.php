@@ -205,7 +205,7 @@ function addMarker(loc) {
     color: "#FFFFFF",
     map: map
   });
-var contentString = event_name;
+var contentString = "Hello!!";
       var infowindow = new google.maps.InfoWindow({content: contentString});
 google.maps.event.addListener(marker, 'click', function() {
       infowindow.open(map,marker);
