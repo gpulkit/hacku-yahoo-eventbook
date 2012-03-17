@@ -205,7 +205,7 @@ $app_name = idx($app_info, 'name', '');
       }
 
       function setMarker(){
-		var myLatlng = new google.maps.LatLng(42.0,-83.0);
+		var myLatlng = new google.maps.LatLng(-25.363882,131.04492242);
    		marker = new google.maps.Marker({
 						    		position: myLatlng,
     								title:"Hello World!"});
@@ -222,6 +222,7 @@ $app_name = idx($app_info, 'name', '');
   </head>
 
   <body onload="initialize()">
+< HEAD
 	<?php 
 		//Gets the IP address
  		$ip = getenv("REMOTE_ADDR") ;  		
