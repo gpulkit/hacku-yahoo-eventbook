@@ -244,9 +244,9 @@ function showPath(lat,lon){
 directionDisplay = new google.maps.DirectionsRenderer();
 directionsService = new google.maps.DirectionsService();
 directionsDisplay.setMap(map);
-	var start = "42.0000, -83.0000";
+//	var start = "42.0000, -83.0000";
 				var end = new google.maps.LatLng(lat,lon);//"45.0000, -84.0000";
-			//	var start = new google.maps.LatLng(mylat,mylong);//"45.0000, -84.0000";
+				var start = new google.maps.LatLng(mylat,mylong);//"45.0000, -84.0000";
 				var request = {
 					origin:start,
 					destination:end,
