@@ -200,17 +200,11 @@ $app_name = idx($app_info, 'name', '');
 
 
 function addMarker(loc) {
-  marker = new google.maps.Marker({
-    position: loc,
-    color: "#FFFFFF",
-    map: map
-  });
-var contentString = "Hello!!";
-      var infowindow = new google.maps.InfoWindow({content: contentString});
-google.maps.event.addListener(marker, 'click', function() {
-      infowindow.open(map,marker);
-    });
-  markersArray.push(marker);
+  	marker = new google.maps.Marker({position:loc,map:map});
+	var contentString = loc;
+      	var infowindow = new google.maps.InfoWindow({content: contentString});
+	google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker);});
+	markersArray.push(marker);
 }
 
 function showOverlays() {
