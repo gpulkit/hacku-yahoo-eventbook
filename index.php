@@ -204,19 +204,6 @@ $app_name = idx($app_info, 'name', '');
             myOptions);
  
       }
-
-      function setMarker(){
-		var myLatlng = new google.maps.LatLng(-25.363882,131.04492242);
-   		marker = new google.maps.Marker({
-						    		position: myLatlng,
-    								title:"Hello World!"});
-		marker.setMap(map);
-
-      }    
-		
-	
-
-
     </script>
 <!-----------Map Script ends ----------------- -->
   </head>
@@ -260,7 +247,7 @@ $app_name = idx($app_info, 'name', '');
 					
 			echo "<script language=javascript>
 
-			      var myLatlng = new google.maps.LatLng(42.0,-83.0);
+			      var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
 			      marker = new google.maps.Marker({
 						    		position: myLatlng,
     								title:\"Hello World!\"});
