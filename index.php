@@ -192,9 +192,7 @@ $app_name = idx($app_info, 'name', '');
 	var directionDisplay;
 	var directionsService = new google.maps.DirectionsService();
 	var contentString = '';
-	var infowindow = new google.maps.InfoWindow({content: contentString});
-
-
+	var infowindow; 
 // Determine support for Geolocation
 if (navigator.geolocation) {
     // Locate position
@@ -225,6 +223,10 @@ function errorFunction(pos) {
         };
 	
             map = new google.maps.Map(document.getElementById("map_canvas"),myOptions); 
+ 	    infowindow = new google.maps.InfoWindow({content: contentString});
+
+
+
       }
 
 //addMarker(loc,"'.$name.'",'.$lat.','.$long.','.$pic_big.','.$description.','.$start_time.','.$end_time.');
@@ -238,7 +240,7 @@ function addMarker(loc, ev_name, lat, lon, pic_url, desc, start_time, end_time)
 	var e_d = new Date(end_time*1000);
 	contentString = '<img src=\''+pic_url+'\' height=\"50px\" width=\"60px\" style="margin-right:10px;"/><div style="font-size:11px; float:right;"><span style=\"font-weight:bold;\">'+ev_name+'</span><br>'+desc+'<br>'+s_d.toDateString()+'  '+s_d.toTimeString()+'<br>'+e_d.toDateString()+'  '+e_d.toTimeString()+'</div>';
       
-	google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker); infowindow.setContent(contentString); showPath(lat,lon);});
+	google.maps.event.addListener(marker, 'click', function() {infowindow.setContent(contentString); infowindow.open(map,this); showPath(lat,lon);});
 	//google.maps.event.addListener(marker, 'click', function() {marker.openInfoWindowHtml('<html><body>+ex_name+"<br>"+s_d.toDateString()+"</body></html>");});
 	markersArray.push(marker);
 	return marker
