@@ -208,9 +208,9 @@ $app_name = idx($app_info, 'name', '');
 		$venue = idx($fid, 'venue');
 		$long = idx($venue, 'longitude');
                 $name = idx($fid, 'name');
-		if(isset($long) && ($long < $longitude+$offset)){
-	      		echo he($name)."\n";
-			echo he($long)."\n";
+		if(isset($long) and ($long < $longitude+$offset)){
+	      		echo he($name).'\n';
+			echo he($long).'\n';
 		}
             }	 
 	 ?>
