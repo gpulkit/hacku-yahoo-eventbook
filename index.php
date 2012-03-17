@@ -208,10 +208,11 @@ $app_name = idx($app_info, 'name', '');
 		$venue = idx($fid, 'venue');
 		if($id = idx($venue, 'id')){
 			$url = 'http://www.graph.facebook.com/'.$id;
-			$json = file_get_contents($url);
-			$data = json_decode($json);	
-			$long = idx($data, 'longitude');
-			$lat = idx($data, 'latitude');
+			if($json = file_get_contents($url)){
+				$data = json_decode($json);	
+				$long = idx($data, 'longitude');
+				$lat = idx($data, 'latitude');
+			}
 		}else{
 
 			$long = idx($venue, 'longitude');
