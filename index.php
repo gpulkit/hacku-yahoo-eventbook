@@ -85,7 +85,7 @@ $offset = 0.4;
 */
 
   $events = $facebook->api(array('method' => 'fql.query',
-				 'query'  => 'SELECT pic_big, name, venue, location, start_time, eid FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) OR uid = me()) AND venue.longitude !=\'\''));//  < \'88\''));//   \''.($long+$offset) .'\''));
+				 'query'  => 'SELECT pic_big, name, venue, location, start_time, eid FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) OR uid = me())'));//  < \'88\''));//   \''.($long+$offset) .'\''));
 
 // AND venue.longitude < \''. ($long+$offset) .'\' AND venue.latitude < \''. ($lat+$offset) .'\' AND venue.longitude > \''. ($long-$offset) .'\' AND venue.latitude > \''. ($lat-$offset) .'\' ORDER BY start_time ASC '));
 
@@ -204,8 +204,13 @@ $app_name = idx($app_info, 'name', '');
             foreach ($events as $fid) {
               // Extract the pieces of info we need from the requests above
               //$venue = idx($fid, 'venue');
-              $name = idx($fid, 'name');
-	      echo he($name);
+		$venue = idx($fid, 'venue');
+		$long = idx($venue, 'longitude');
+                $name = idx($fid, 'name');
+		if(isset($long)){
+	      		echo he($name)."\n";
+			echo he($long);
+		}
             }	 
 	 ?>
           
