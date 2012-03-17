@@ -177,8 +177,8 @@ $app_name = idx($app_info, 'name', '');
 
  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <style type="text/css">
-      html { height: 60% }
-      body { height: 50%; margin: 0; padding: 0 }
+      html { height: 200px }
+      body { height: 200px; margin: 0; padding: 0 }
       #map_canvas { height: 100% }
     </style>
     <script type="text/javascript"
