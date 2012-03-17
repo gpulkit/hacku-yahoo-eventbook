@@ -177,7 +177,7 @@ $app_name = idx($app_info, 'name', '');
  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <style type="text/css">
       html { height: 400px }
-      body { height: 400px; margin: 0; padding: 0 }
+      body { height: 400px; margin-left:auto; margin-right:auto; width: 1000px; background: url('http://aboutpranay.com/images/wrapper.png') repeat; padding: 10px;  }
       #map_canvas { height: 100% }
     </style>
     <script type="text/javascript"
@@ -190,7 +190,8 @@ $app_name = idx($app_info, 'name', '');
 	var listnerArray = [];
 	var directionDisplay;
 	var directionsService = new google.maps.DirectionsService();
-
+	var contentString = '';
+	var infowindow; 
 // Determine support for Geolocation
 if (navigator.geolocation) {
     // Locate position
@@ -221,6 +222,10 @@ function errorFunction(pos) {
         };
 	
             map = new google.maps.Map(document.getElementById("map_canvas"),myOptions); 
+ 	    infowindow = new google.maps.InfoWindow({content: contentString});
+
+
+
       }
 
 //addMarker(loc,"'.$name.'",'.$lat.','.$long.','.$pic_big.','.$description.','.$start_time.','.$end_time.');
@@ -232,10 +237,9 @@ function addMarker(loc, ev_name, lat, lon, pic_url, desc, start_time, end_time)
   	marker = new google.maps.Marker({position:loc,map:map});
 	var s_d = new Date(start_time*1000);
 	var e_d = new Date(end_time*1000);
-	var contentString = '<img src=\''+pic_url+'\' height=\"50px\" width=\"60px\" style="margin-right:10px;"/><div style="font-size:11px; float:right;"><span style=\"font-weight:bold;\">'+ev_name+'</span><br>'+desc+'<br>'+s_d.toDateString()+'  '+s_d.toTimeString()+'<br>'+e_d.toDateString()+'  '+e_d.toTimeString()+'</div>';
-      	var infowindow = new google.maps.InfoWindow({content: contentString});
-
-	google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker); showPath(lat,lon);});
+	contentString = '<img src=\''+pic_url+'\' height=\"50px\" width=\"60px\" style="margin-right:10px;"/><div style="font-size:11px; float:right;"><span style=\"font-weight:bold;\">'+ev_name+'</span><br>'+desc+'<br>'+s_d.toDateString()+'  '+s_d.toTimeString()+'<br>'+e_d.toDateString()+'  '+e_d.toTimeString()+'</div>';
+      
+	google.maps.event.addListener(marker, 'click', function() {infowindow.setContent(contentString); infowindow.open(map,this); showPath(lat,lon);});
 	//google.maps.event.addListener(marker, 'click', function() {marker.openInfoWindowHtml('<html><body>+ex_name+"<br>"+s_d.toDateString()+"</body></html>");});
 	markersArray.push(marker);
 	return marker
