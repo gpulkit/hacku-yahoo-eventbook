@@ -278,6 +278,7 @@ function errorFunction(pos) {
 	lat = 42; longi=-83;
 	loc = new google.maps.LatLng(lat,longi);
 	addMarker(loc,"Current Location");
+	google.maps.event.addListener(marker, 'click', toggleBounce());
 	</script>
           <?php
             foreach ($events as $fid) {
@@ -320,7 +321,7 @@ function errorFunction(pos) {
 
 
   <script type="text/javascript">
-  	showOverlays();
+  	//showOverlays();
   </script>
 
 
