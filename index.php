@@ -203,6 +203,8 @@ if (navigator.geolocation) {
 // Success callback function
 var mylat = pos.coords.latitude;
 var mylong = pos.coords.longitude;
+mylat = "42.2708";
+mylong = "-83.7263";
 
 // Error callback function
 function errorFunction(pos) {
@@ -215,7 +217,7 @@ function errorFunction(pos) {
 
 	     
         var myOptions = {
-          center: new google.maps.LatLng("42.0", "-83.0"),
+          center: new google.maps.LatLng(mylat,mylong),
           zoom: 8,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
