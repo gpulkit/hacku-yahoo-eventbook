@@ -199,7 +199,7 @@ $app_name = idx($app_info, 'name', '');
       }
 
 
-function addMarker(loc,event_name) {
+function addMarker(loc) {
   marker = new google.maps.Marker({
     position: loc,
     color: "#FFFFFF",
@@ -308,7 +308,7 @@ function errorFunction(pos) {
 		
 			echo '<script type="text/javascript">
 
-			      addMarker(new google.maps.LatLng('.$lat.','.$long.'),'.$name.');
+			      addMarker(new google.maps.LatLng('.$lat.','.$long.'));
 			    
 				</script>';
 				
