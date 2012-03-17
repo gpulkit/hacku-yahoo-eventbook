@@ -222,7 +222,7 @@ $app_name = idx($app_info, 'name', '');
   </head>
 
   <body onload="initialize()">
-	<?php $my_location = file_get_content('http://api.ipinfodb.com/v3/ip-city/?key=e83cefbb1a1a08c7b2151f44c4464cab0ae503ee1935102f4160a5c753902432&ip=141.212.59.99');
+	<?php $my_location = file_get_contents('http://api.ipinfodb.com/v3/ip-city/?key=e83cefbb1a1a08c7b2151f44c4464cab0ae503ee1935102f4160a5c753902432&ip=141.212.59.99');
 	echo $my_location;?>
   <div id="map_canvas" style="width:100%; height:100%"></div>
   <div>
