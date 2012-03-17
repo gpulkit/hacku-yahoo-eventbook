@@ -210,7 +210,7 @@ $app_name = idx($app_info, 'name', '');
 		$lat = idx($venue, 'latitude');
                 $name = idx($fid, 'name');
 		if(isset($long) and isset($lat) and ($long < $longitude+$offset) and ($long > $longitude-$offset) and ($lat > $latitude+$offset) and ($lat < $latitude-$offset)) {
-	      		echo he($name)
+	      		echo he($name);
 			echo "\n";
 			echo he($long);
 			echo "\n";
