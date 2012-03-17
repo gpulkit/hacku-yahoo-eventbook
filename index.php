@@ -218,7 +218,7 @@ function errorFunction(pos) {
 	
         var myOptions = {
           center: new google.maps.LatLng("42.292905","-83.716378"),
-          zoom: 15,
+          zoom: 14,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 	
@@ -235,12 +235,12 @@ function addMarker(loc, ev_name, lat, lon, pic_url, desc, start_time, end_time)
 	//var img = "<img src='"+pic_url+"'>";
 	//var img = new Image();
 	//img.src = pic_url;
-  	marker = new google.maps.Marker({position:loc,map:map});
 	var s_d = new Date(start_time*1000);
 	var e_d = new Date(end_time*1000);
 	contentString = '<img src=\''+pic_url+'\' height=\"50px\" width=\"60px\" style="margin-right:10px;"/><div style="font-size:11px; float:right;"><span style=\"font-weight:bold;\">'+ev_name+'</span><br>'+desc+'<br>'+s_d.toDateString()+'  '+s_d.toTimeString()+'<br>'+e_d.toDateString()+'  '+e_d.toTimeString()+'</div>';
       
-	google.maps.event.addListener(marker, 'click', function() {infowindow.setContent(contentString); infowindow.open(map,this); showPath(lat,lon);});
+  	marker = new google.maps.Marker({position:loc,map:map,html:contentString});
+	google.maps.event.addListener(marker, 'click', function() {infowindow.setContent(this.html); infowindow.open(map,this); showPath(lat,lon);});
 	//google.maps.event.addListener(marker, 'click', function() {marker.openInfoWindowHtml('<html><body>+ex_name+"<br>"+s_d.toDateString()+"</body></html>");});
 	markersArray.push(marker);
 	return marker
