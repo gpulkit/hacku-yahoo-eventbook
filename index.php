@@ -361,7 +361,7 @@ function errorFunction(pos) {
 
 
   <script type="text/javascript">
-  	//showOverlays();
+  	showOverlays();
   </script>
 
 
