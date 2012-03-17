@@ -208,27 +208,27 @@ $app_name = idx($app_info, 'name', '');
       }
 
 
-function addMarker(loc, ev_name) 
+function addMarker(loc, ev_name, lat, lon) 
 {
   	marker = new google.maps.Marker({position:loc,map:map});
 	var contentString = ev_name;
       	var infowindow = new google.maps.InfoWindow({content: contentString});
 
-	google.maps.event.addListener(marker, 'click', function() {showPath(loc);});
-
+	google.maps.event.addListener(marker, 'click', function() {showPath(lat,lon);});
+	var latu=marker.getAttribute('lat');
 
 	markersArray.push(marker);
 	return marker
 }
 
 
-function showPathloc(){
+function showPath(lat,lon){
 
 directionDisplay = new google.maps.DirectionsRenderer();
 directionsService = new google.maps.DirectionsService();
 directionsDisplay.setMap(map);
 	var start = "42.0000, -83.0000";
-				var end = loc; // "45.0000, -84.0000";
+				var end = "45.0000, -84.0000";
 				var request = {
 					origin:start,
 					destination:end,
@@ -357,7 +357,7 @@ function errorFunction(pos) {
 		
 			echo '<script type="text/javascript">
 				loc = new google.maps.LatLng('.$lat.','.$long.');
-			      	addMarker(loc,"'.$name.'");
+			      	addMarker(loc,"'.$name.'",'.$lat.','.$long.');
 			</script>';
 				
 			echo he($name);
