@@ -199,7 +199,7 @@ $app_name = idx($app_info, 'name', '');
 		$longitude = "-83";
 
 // using offset gives us a "square" on the map from where to search the events
-		$offset = 0.4;
+		$offset = 1.0;
 
               // Extract the pieces of info we need from the requests above
               //$venue = idx($fid, 'venue');
