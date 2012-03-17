@@ -202,6 +202,15 @@ $app_name = idx($app_info, 'name', '');
         };
             map = new google.maps.Map(document.getElementById("map_canvas"),
             myOptions);
+
+
+	     var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+			      marker = new google.maps.Marker({
+					      			map: map,
+						    		position: myLatlng,
+    								title:\"Hello World!\"});
+				marker.setMap(map);
+
  
       }
     </script>
@@ -244,7 +253,7 @@ $app_name = idx($app_info, 'name', '');
 		$name = idx($fid, 'name');
 		if(isset($long) and isset($lat) and ($long < ($longitude+$offset)) and ($long > ($longitude-$offset)) and ($lat < ($latitude+$offset)) and ($lat > ($latitude-$offset))) {
 	      	
-					
+		/*			
 			echo "<script language=javascript>
 
 			      var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
@@ -255,6 +264,7 @@ $app_name = idx($app_info, 'name', '');
 				marker.setMap(map);
 
 				</script>";
+				*/
 			echo he($name);
 			echo "\n";
 		}
