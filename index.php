@@ -215,7 +215,6 @@ function addMarker(loc, ev_name, lat, lon)
       	var infowindow = new google.maps.InfoWindow({content: contentString});
 
 	google.maps.event.addListener(marker, 'click', function() {showPath(lat,lon);});
-	var latu=marker.getAttribute('lat');
 
 	markersArray.push(marker);
 	return marker
