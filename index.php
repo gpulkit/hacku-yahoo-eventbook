@@ -233,7 +233,7 @@ function addMarker(loc, ev_name, lat, lon, pic_url, desc, start_time, end_time)
   	marker = new google.maps.Marker({position:loc,map:map,icon:pic_url});
 	var s_d = new Date(start_time*1000);
 	var e_d = new Date(end_time*1000);
-	var contentString = ev_name+"<br>"+desc+"<br>"+s_d+"   "+e_d;
+	var contentString = ev_name+"<br>"+desc+"<br>"+s_d.toDateString()+"   "+e_d.toTimeString();
       	var infowindow = new google.maps.InfoWindow({content: contentString});
 
 	google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker); showPath(lat,lon);});
