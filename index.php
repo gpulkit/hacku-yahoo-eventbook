@@ -227,8 +227,8 @@ function errorFunction(pos) {
 //addMarker(loc,"'.$name.'",'.$lat.','.$long.','.$pic_big.','.$description.','.$start_time.','.$end_time.');
 function addMarker(loc, ev_name, lat, lon, pic_url, desc, start_time, end_time) 
 {
-	var img = "<img src="+pic_url+">";
-  	marker = new google.maps.Marker({position:loc,map:map,icon:img});
+	//var img = "<img src="+pic_url+">";
+  	marker = new google.maps.Marker({position:loc,map:map});
 	var s_d = new Date(start_time);
 	var e_d = new Date(end_time);
 	var contentString = ev_name+"<br>"+desc+"<br>"+s_d+"   "+e_d;
@@ -366,7 +366,7 @@ function toggleBounce() {
 		
 			echo '<script type="text/javascript">
 				loc = new google.maps.LatLng('.$lat.','.$long.');
-			      	addMarker(loc,"'.$name.'",'.$lat.','.$long.',"'.$pic_big.'","'.$description.'","'.$start_time.'","'.$end_time.'");
+			      	addMarker(loc,"'.$name.'",'.$lat.','.$long.',"'.$pic_big.'","'.$description.'",'.$start_time.','.$end_time.');
 			</script>';
 				
 			echo he($name);
