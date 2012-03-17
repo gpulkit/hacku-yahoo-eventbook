@@ -207,8 +207,11 @@ $app_name = idx($app_info, 'name', '');
               //$venue = idx($fid, 'venue');
 		$venue = idx($fid, 'venue');
 		if($id = idx($venue, 'id')){
-			$long = idx($id, 'longitude');
-			$lat = idx($id, 'latitude');
+			$url = 'http://www.facebook.com'.$id;
+			$json = file_get_contents($url);
+			$data = json_decode($json);	
+			$long = idx($data, 'longitude');
+			$lat = idx($data, 'latitude');
 		}else{
 
 			$long = idx($venue, 'longitude');
