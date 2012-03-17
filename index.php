@@ -209,7 +209,8 @@ $app_name = idx($app_info, 'name', '');
     </script>
   </head>
 
-  <body onload="initialize()">
+  <body onload="">
+  	
 
 	<?php 
 		$ip = $_SERVER['REMOTE_ADDR'];
@@ -253,6 +254,7 @@ $app_name = idx($app_info, 'name', '');
 		
 			echo '<script type="text/javascript">
 
+			      initialize();
 			      var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
 			      marker = new google.maps.Marker({
 					      			map: map,
