@@ -188,7 +188,7 @@ $app_name = idx($app_info, 'name', '');
       #map_canvas { height: 100% }
     </style>
     <script type="text/javascript"
-      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA_XI29EdGJkjoZB9Q8Igxbtu9rQyX14ek&sensor=TRUE">
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA_XI29EdGJkjoZB9Q8Igxbtu9rQyX14ek&sensor=true">
     </script>
     <script type="text/javascript">
       function initialize() {
