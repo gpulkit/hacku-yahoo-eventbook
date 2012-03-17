@@ -214,7 +214,7 @@ function addMarker(loc, ev_name)
 	var contentString = ev_name;
       	var infowindow = new google.maps.InfoWindow({content: contentString});
 
-	google.maps.event.addListener(marker, 'click', function() {showPath();});
+	google.maps.event.addListener(marker, 'click', function() {showPath(loc);});
 
 
 	markersArray.push(marker);
@@ -222,17 +222,17 @@ function addMarker(loc, ev_name)
 }
 
 
-function showPath(){
+function showPathloc(){
 
 directionDisplay = new google.maps.DirectionsRenderer();
 directionsService = new google.maps.DirectionsService();
 directionsDisplay.setMap(map);
 	var start = "42.0000, -83.0000";
-				var end = "45.0000, -84.0000";
+				var end = loc; // "45.0000, -84.0000";
 				var request = {
 					origin:start,
 					destination:end,
-					travelMode: google.maps.DirectionsTravelMode.DRIVING
+					travelMode: goiogle.maps.DirectionsTravelMode.DRIVING
 				};
 
 directionsService.route(request, function(response, status1) {
