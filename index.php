@@ -177,7 +177,8 @@ $app_name = idx($app_info, 'name', '');
  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <style type="text/css">
       html { height: 400px }
-      body { height: 400px; margin-left:auto; margin-right:auto; width: 1000px; background: url('http://aboutpranay.com/images/wrapper.png') repeat; padding: 10px;  }
+      body { height: 400px; margin-left:auto; margin-right:auto; width: 900px; }
+      body #wrapper { background: url('http://aboutpranay.com/images/wrapper.png') repeat; padding: 10px; }
       #map_canvas { height: 100% }
     </style>
     <script type="text/javascript"
@@ -217,7 +218,11 @@ function errorFunction(pos) {
 	
         var myOptions = {
           center: new google.maps.LatLng("42.292905","-83.716378"),
+<<<<<<< HEAD
           zoom: 13,
+=======
+          zoom: 14,
+>>>>>>> 5912bd040cef72ce443dea2e7fa8c6af0900e353
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 	
@@ -234,12 +239,12 @@ function addMarker(loc, ev_name, lat, lon, pic_url, desc, start_time, end_time)
 	//var img = "<img src='"+pic_url+"'>";
 	//var img = new Image();
 	//img.src = pic_url;
-  	marker = new google.maps.Marker({position:loc,map:map});
 	var s_d = new Date(start_time*1000);
 	var e_d = new Date(end_time*1000);
 	contentString = '<img src=\''+pic_url+'\' height=\"50px\" width=\"60px\" style="margin-right:10px;"/><div style="font-size:11px; float:right;"><span style=\"font-weight:bold;\">'+ev_name+'</span><br>'+desc+'<br>'+s_d.toDateString()+'  '+s_d.toTimeString()+'<br>'+e_d.toDateString()+'  '+e_d.toTimeString()+'</div>';
       
-	google.maps.event.addListener(marker, 'click', function() {infowindow.setContent(contentString); infowindow.open(map,this); showPath(lat,lon);});
+  	marker = new google.maps.Marker({position:loc,map:map,html:contentString});
+	google.maps.event.addListener(marker, 'click', function() {infowindow.setContent(this.html); infowindow.open(map,this); showPath(lat,lon);});
 	//google.maps.event.addListener(marker, 'click', function() {marker.openInfoWindowHtml('<html><body>+ex_name+"<br>"+s_d.toDateString()+"</body></html>");});
 	markersArray.push(marker);
 	return marker
@@ -315,7 +320,6 @@ function toggleBounce() {
   </head>
 
   <body onload="">
-  	
 
 	<?php 
 	//	$ip = $_SERVER['REMOTE_ADDR'];
@@ -332,7 +336,7 @@ function toggleBounce() {
 
 
   <div>
-        <h3>List of events
+        <h3>
         <script type="text/javascript">
 	lat = 42.292905; longi = -83.716378;
 	loc = new google.maps.LatLng(lat,longi);
@@ -375,8 +379,8 @@ function toggleBounce() {
 			      	addMarker(loc,"'.$name.'",'.$lat.','.$long.',"'.$pic_big.'","'.$description.'",'.$start_time.','.$end_time.');
 			</script>';
 				
-			echo he($name);
-			echo "\n";
+			//echo he($name);
+			//echo "\n";
 		}
             }	 
 	 ?>
@@ -470,6 +474,6 @@ function toggleBounce() {
       }
     ?>
 
-   
+
   </body>
 </html>
