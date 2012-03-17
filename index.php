@@ -302,7 +302,7 @@ function errorFunction(pos) {
 		
 			echo '<script type="text/javascript">
 				loc = new google.maps.LatLng('.$lat.','.$long.');
-			      addMarker(loc,'.$name.');
+			      addMarker(loc,"'.$name.'");
 			    
 				</script>';
 				
