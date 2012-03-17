@@ -183,7 +183,7 @@ $app_name = idx($app_info, 'name', '');
 <!--------------Maps Script------------------------------------------------------->
  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <style type="text/css">
-      html { height: 30% }
+      html { height: 60% }
       body { height: 50%; margin: 0; padding: 0 }
       #map_canvas { height: 100% }
     </style>
@@ -193,18 +193,25 @@ $app_name = idx($app_info, 'name', '');
     <script type="text/javascript">
       
 	var map;	
-
+	var marker;
      function initialize() {
         var myOptions = {
           center: new google.maps.LatLng(42.0, -83.0),
           zoom: 8,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
-        var map = new google.maps.Map(document.getElementById("map_canvas"),
+            map = new google.maps.Map(document.getElementById("map_canvas"),
             myOptions);
       }
 
-            
+      function setMarker(){
+		var myLatlng = new google.maps.LatLng(42.0,-83.0);
+   		marker = new google.maps.Marker({
+						    		position: myLatlng,
+    								title:"Hello World!"});
+		marker.setMap(map);
+
+      }    
 		
 	
 
@@ -244,19 +251,23 @@ $app_name = idx($app_info, 'name', '');
 
 		$name = idx($fid, 'name');
 		if(isset($long) and isset($lat) and ($long < ($longitude+$offset)) and ($long > ($longitude-$offset)) and ($lat < ($latitude+$offset)) and ($lat > ($latitude-$offset))) {
-	      		
+	      	
+			echo "<script language=text/javascript>
+				setMarker();
+				sdfgdfgdfgdfg
+			      </script>";	
+		/*	
 			echo "<script language=javascript>
 
 			      var myLatlng = new google.maps.LatLng(42.0,-83.0);
-			      var marker = new google.maps.Marker({
+			      marker = new google.maps.Marker({
 						    		position: myLatlng,
+								map : map, 	
     								title:\"Hello World!\"});
 				marker.setMap(map);
 
-				</script>";
+				</script>";*/
 			echo he($name);
-			echo "\n";
-			echo he($long);
 			echo "\n";
 		}
             }	 
