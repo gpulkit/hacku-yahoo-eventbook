@@ -217,7 +217,7 @@ function errorFunction(pos) {
 	
         var myOptions = {
           center: new google.maps.LatLng("42.292905","-83.716378"),
-          zoom: 8,
+          zoom: 10,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 	
@@ -227,13 +227,16 @@ function errorFunction(pos) {
 //addMarker(loc,"'.$name.'",'.$lat.','.$long.','.$pic_big.','.$description.','.$start_time.','.$end_time.');
 function addMarker(loc, ev_name, lat, lon, pic_url, desc, start_time, end_time) 
 {
-	marker = new google.maps.Marker({position:loc,map:map});
-	
-	var contentString = ev_name+"\n"+desc+"\n"+start_time+"   "+end_time;
+	//var img = "<img src='"+pic_url+"'>";
+	//var img = new Image();
+	//img.src = pic_url;
+  	marker = new google.maps.Marker({position:loc,map:map});
+	var s_d = new Date(start_time*1000);
+	var e_d = new Date(end_time*1000);
+	var contentString = ev_name+"<br>"+desc+"<br>"+s_d.toDateString()+"  "+s_d.toTimeString()+"<br>"+e_d.toDateString()+"  "+e_d.toTimeString();
       	var infowindow = new google.maps.InfoWindow({content: contentString});
 
 	google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker); showPath(lat,lon);});
-
 	markersArray.push(marker);
 	return marker
 }
@@ -354,30 +357,17 @@ function toggleBounce() {
                 }
 		//pic_big, name, description, start_time, end_time, location, venue, eid
 		$name = idx($fid, 'name');
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-=======
 		$pic_big = idx($fid, 'pic_big');
 		$description = idx($fid, 'description');
 		$start_time = idx($fid, 'start_time');
 		$end_time = idx($fid, 'end_time');
->>>>>>> de0e5ad49c2dda610b624aa782365693d147947b
 
 		if(isset($long) and isset($lat) and ($long < ($longitude+$offset)) and ($long > ($longitude-$offset)) and ($lat < ($latitude+$offset)) and ($lat > ($latitude-$offset))) {
 	      	
 		
 			echo '<script type="text/javascript">
 				loc = new google.maps.LatLng('.$lat.','.$long.');
-			      	addMarker(loc,"'.$name.'",'.$lat.','.$long.',"'.$pic_big.'","'.$description.'","'.$start_time.'","'.$end_time.'");
+			      	addMarker(loc,"'.$name.'",'.$lat.','.$long.',"'.$pic_big.'","'.$description.'",'.$start_time.','.$end_time.');
 			</script>';
 				
 			echo he($name);
@@ -434,11 +424,7 @@ function toggleBounce() {
       <p id="picture" style="background-image: url(https://graph.facebook.com/<?php echo he($user_id); ?>/picture?type=normal)"></p>
 
       <div>
-        <h1>Welcome man, <strong><?php echo he(idx($basic, 'name')); ?></strong></h1>
-        <p class="tagline">
-          This is your app
-          <a href="<?php echo he(idx($app_info, 'link'));?>" target="_top"><?php echo he($app_name); ?></a>
-        </p>
+        <h1>Welcome, <strong><?php echo he(idx($basic, 'name')); ?></strong></h1>
 
         <div id="share-app">
           <p>Share your app:</p>
