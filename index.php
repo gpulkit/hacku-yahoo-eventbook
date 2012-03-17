@@ -185,6 +185,7 @@ $app_name = idx($app_info, 'name', '');
       src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA_XI29EdGJkjoZB9Q8Igxbtu9rQyX14ek&sensor=false">
     </script>
     <script type="text/javascript">
+	var contentString = 'Hello <strong>World</strong>!';
       var infowindow = new google.maps.InfoWindow({content: contentString});
 	var map;	
 	var markersArray = [];
