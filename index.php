@@ -371,8 +371,8 @@ $app_name = idx($app_info, 'name', '');
       </div>
 
       <div class="list">
-        <h3>List of events</h3>
-        <ul class="friends">
+        <h3>List of events
+        
           <?php
             foreach ($events as $auf) {
               // Extract the pieces of info we need from the requests above
@@ -380,12 +380,13 @@ $app_name = idx($app_info, 'name', '');
               $name = idx($auf, 'name');
           ?>
           <li>
-		<h3>
+		
 		sdfsdfsdf
 		sdfsdfsdfdsf
 	      <?php echo he($name); ?>
-		</h3>
-          </li>
+		
+          
+</h3>
           <?php
             }
           ?>
