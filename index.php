@@ -376,8 +376,8 @@ $app_name = idx($app_info, 'name', '');
               $name = idx($auf, 'name');
           ?>
           <li>
-	      <?php echo he($name); ?>
-              <?php echo he($venue); ?>
+	      <?php echo $name; ?>
+              <?php echo $venue; ?>
           </li>
           <?php
             }
