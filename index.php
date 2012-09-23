@@ -61,32 +61,16 @@ if ($user_id) {
     'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
   ));
 
-/*
 $events = $facebook->api(array('method' => 'fql.query',
-				 'query'  => 'SELECT pic_big, name, description, start_time, end_time, location, venue, eid FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) OR uid = me())'));//  < \'88\''));//   \''.($long+$offset) .'\''));
-*/
-
-
-$events = $facebook->api(array('method' => 'fql.query',
-				 'query'  => 'SELECT pic_big, name, description, start_time, end_time, location, venue, eid FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid = me())'));//  < \'88\''));//   \''.($long+$offset) .'\''));
-
-
-
-// AND venue.longitude < \''. ($long+$offset) .'\' AND venue.latitude < \''. ($lat+$offset) .'\' AND venue.longitude > \''. ($long-$offset) .'\' AND venue.latitude > \''. ($lat-$offset) .'\' ORDER BY start_time ASC '));
-
-/*
-  $events = $facebook->api(array('method' => 'fql.query',
-				 'query'  => 'SELECT pic_big, name, venue, location, start_time, eid FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) OR uid = me()) AND venue.longitude < \''. ($long+$offset) .'\' AND venue.latitude < \''. ($lat+$offset) .'\' AND venue.longitude > \''. ($long-$offset) .'\' AND venue.latitude > \''. ($lat-$offset) .'\' ORDER BY start_time ASC '));
-*/
+				 'query'  => 'SELECT pic_big, name, description, start_time, end_time, location, venue, eid FROM event WHERE eid IN (SELECT eid FROM event_member WHERE uid = me())'));
 
 }
 
 // Fetch the basic info of the app that they are using
 $app_info = $facebook->api('/'. AppInfo::appID());
-
 $app_name = idx($app_info, 'name', '');
-
 ?>
+
 <!DOCTYPE html>
 <html xmlns:fb="http://ogp.me/ns/fb#" lang="en">
   <head>
@@ -122,8 +106,6 @@ $app_name = idx($app_info, 'name', '');
           console.log('The response was', response);
         }
       }
-	
-
 
       $(function(){
         // Set up so we handle click on the buttons
@@ -174,7 +156,7 @@ $app_name = idx($app_info, 'name', '');
       });
     </script>
 
- <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <style type="text/css">
       html { height: 400px }
       body { height: 400px; margin-left:auto; margin-right:auto; width: 900px; background: url('http://fc00.deviantart.net/fs71/f/2010/257/c/e/facebook___wallpaper_by_fox_future_media-d2yrb7j.png') no-repeat;}
@@ -193,135 +175,96 @@ $app_name = idx($app_info, 'name', '');
 	var directionsService = new google.maps.DirectionsService();
 	var contentString = '';
 	var infowindow; 
-// Determine support for Geolocation
-if (navigator.geolocation) {
-    // Locate position
-    navigator.geolocation.getCurrentPosition(displayPosition, errorFunction);
-} else {
-    alert('It seems like Geolocation, which is required for this page, is not enabled in your browser. Please use a browser which supports it.');
-}
-
-// Success callback function
-//var mylat = pos.coords.latitude;
-//var mylong = pos.coords.longitude;
-
-
-// Error callback function
-function errorFunction(pos) {
-    alert('Error!');
-}
-
-
-     function initialize() {
-	directionsDisplay = new google.maps.DirectionsRenderer();
-
-	
-        var myOptions = {
-          center: new google.maps.LatLng("42.292905","-83.716378"),
-          zoom: 14,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-	
-            map = new google.maps.Map(document.getElementById("map_canvas"),myOptions); 
- 	    infowindow = new google.maps.InfoWindow({content: contentString});
-
-
-
-      }
-
-//addMarker(loc,"'.$name.'",'.$lat.','.$long.','.$pic_big.','.$description.','.$start_time.','.$end_time.');
-function addMarker(loc, ev_name, lat, lon, pic_url, desc, start_time, end_time) 
-{
-	//var img = "<img src='"+pic_url+"'>";
-	//var img = new Image();
-	//img.src = pic_url;
-	var s_d = new Date(start_time*1000);
-	var e_d = new Date(end_time*1000);
-	contentString = '<img src=\''+pic_url+'\' height=\"50px\" width=\"60px\" style="margin-right:10px;"/><div style="font-size:11px; float:right;"><span style=\"font-weight:bold;\">'+ev_name+'</span><br>'+desc+'<br>'+s_d.toDateString()+'  '+s_d.toTimeString()+'<br>'+e_d.toDateString()+'  '+e_d.toTimeString()+'</div>';
-      
-  	marker = new google.maps.Marker({position:loc,map:map,html:contentString});
-	google.maps.event.addListener(marker, 'click', function() {infowindow.setContent(this.html); infowindow.open(map,this); showPath(lat,lon);});
-	//google.maps.event.addListener(marker, 'click', function() {marker.openInfoWindowHtml('<html><body>+ex_name+"<br>"+s_d.toDateString()+"</body></html>");});
-	markersArray.push(marker);
-	return marker
-}
-
-
-function showPath(lat,lon){
-
-directionDisplay = new google.maps.DirectionsRenderer();
-directionsService = new google.maps.DirectionsService();
-directionsDisplay.setMap(map);
-directionsDisplay.suppressMarkers = true;
-	var start = "42.292905, -83.716378";
-				var end = new google.maps.LatLng(lat,lon);//"45.0000, -84.0000";
-			//	var start = new google.maps.LatLng(mylat,mylong);//"45.0000, -84.0000";
-				var request = {
-					origin:start,
-					destination:end,
-					travelMode: google.maps.DirectionsTravelMode.DRIVING
-				};
-
-directionsService.route(request, function(response, status1) {
-	if (status1 == google.maps.DirectionsStatus.OK) {
-		directionsDisplay.setDirections(response);
+	// Determine support for Geolocation
+	if (navigator.geolocation) {
+	    // Locate position
+	    navigator.geolocation.getCurrentPosition(displayPosition, errorFunction);
+	} else {
+	    alert('It seems like Geolocation, which is required for this page, is not enabled in your browser. Please use a browser which supports it.');
 	}
-});
-}
+	
+	// Success callback function
+	//var mylat = pos.coords.latitude;
+	//var mylong = pos.coords.longitude;
+	
+	
+	// Error callback function
+	function errorFunction(pos) {
+	    alert('Error!');
+	}
 
 
-function showOverlays() {
-  if (markersArray) {
-    for (i in markersArray) {
-      //markersArray[i].setMap(map);
-   //    google.maps.event.addListener(markersArray[i], 'click', toggleBounce());
-    }
-  }
-}  
-/*
-function showOverlays()
-{
-	if (markersArray)
+     	function initialize() {
+		directionsDisplay = new google.maps.DirectionsRenderer();
+
+	
+        	var myOptions = {
+          		center: new google.maps.LatLng("42.292905","-83.716378"),
+          		zoom: 14,
+          		mapTypeId: google.maps.MapTypeId.ROADMAP
+        	};
+	
+            	map = new google.maps.Map(document.getElementById("map_canvas"),myOptions); 
+ 	    	infowindow = new google.maps.InfoWindow({content: contentString});
+      	}
+
+	function addMarker(loc, ev_name, lat, lon, pic_url, desc, start_time, end_time) 
 	{
-		for (i in markersArray)
-		{
-			var infowindow = new google.maps.InfoWindow({content: contentString});
-			google.maps.event.addListener(markersArray[i], 'click', function() {infowindow.open(map,markersArray[i]);});
-		}
+		//var img = "<img src='"+pic_url+"'>";
+		//var img = new Image();
+		//img.src = pic_url;
+		var s_d = new Date(start_time*1000);
+		var e_d = new Date(end_time*1000);
+		contentString = '<img src=\''+pic_url+'\' height=\"50px\" width=\"60px\" style="margin-right:10px;"/><div style="font-size:11px; float:right;"><span style=\"font-weight:bold;\">'+ev_name+'</span><br>'+desc+'<br>'+s_d.toDateString()+'  '+s_d.toTimeString()+'<br>'+e_d.toDateString()+'  '+e_d.toTimeString()+'</div>';
+	      
+	  	marker = new google.maps.Marker({position:loc,map:map,html:contentString});
+		google.maps.event.addListener(marker, 'click', function() {infowindow.setContent(this.html); infowindow.open(map,this); showPath(lat,lon);});
+		//google.maps.event.addListener(marker, 'click', function() {marker.openInfoWindowHtml('<html><body>+ex_name+"<br>"+s_d.toDateString()+"</body></html>");});
+		markersArray.push(marker);
+		return marker
 	}
 
-}
-*/
+	function showPath(lat,lon){
+	
+		directionDisplay = new google.maps.DirectionsRenderer();
+		directionsService = new google.maps.DirectionsService();
+		directionsDisplay.setMap(map);
+		directionsDisplay.suppressMarkers = true;
+		var start = "42.292905, -83.716378";
+		var end = new google.maps.LatLng(lat,lon);//"45.0000, -84.0000";
+		var request = 
+			{
+				origin:start,
+				destination:end,
+				travelMode: google.maps.DirectionsTravelMode.DRIVING
+			};
+		
+		directionsService.route(request, function(response, status1) {
+			if (status1 == google.maps.DirectionsStatus.OK) {
+				directionsDisplay.setDirections(response);
+			}
+		});
+	}
 
-function toggleBounce() {
+	function showOverlays() {
+	  if (markersArray) {
+	    for (i in markersArray) {
+	      	markersArray[i].setMap(map);
+	   	google.maps.event.addListener(markersArray[i], 'click', toggleBounce());
+	    }
+	  }
+	}  
 
-  if (marker.getAnimation() != null) {
-    marker.setAnimation(null);
-  } else {
-    marker.setAnimation(google.maps.Animation.BOUNCE);
-  }
-}
-
-
-
-</script>
-
-
-
-
-
-
-
+	function toggleBounce() {
+	  if (marker.getAnimation() != null) {
+	    marker.setAnimation(null);
+	  } else {
+	    marker.setAnimation(google.maps.Animation.BOUNCE);
+	  }
+	}
     </script>
   </head>
-
   <body onload="">
-
-	<?php 
-	//	$ip = $_SERVER['REMOTE_ADDR'];
-		//$my_location = file_get_contents('http://api.ipinfodb.com/v3/ip-city/?key=e83cefbb1a1a08c7b2151f44c4464cab0ae503ee1935102f4160a5c753902432&ip='.$ip);
-	//	echo $ip;
-	 ?> 
   <div id="top_banner" style="width:100%; height:100px; background: color('#db7');">
   <div id="header" align="center" style="font-size:44px; font-weight:bold; color:#ddd; font-family:'Cambria';">EventBook</div>
   </div>
@@ -329,11 +272,6 @@ function toggleBounce() {
   <script type="text/javascript">
   initialize();
   </script>
-
-
-
-
-
   <div>
         <h3>
         <script type="text/javascript">
@@ -369,29 +307,19 @@ function toggleBounce() {
 		$description = idx($fid, 'description');
 		$start_time = idx($fid, 'start_time');
 		$end_time = idx($fid, 'end_time');
-
 		if(isset($long) and isset($lat) and ($long < ($longitude+$offset)) and ($long > ($longitude-$offset)) and ($lat < ($latitude+$offset)) and ($lat > ($latitude-$offset))) {
-	      	
-		
 			echo '<script type="text/javascript">
 				loc = new google.maps.LatLng('.$lat.','.$long.');
 			      	addMarker(loc,"'.$name.'",'.$lat.','.$long.',"'.$pic_big.'","'.$description.'",'.$start_time.','.$end_time.');
 			</script>';
-				
-			//echo he($name);
-			//echo "\n";
 		}
             }	 
 	 ?>
 	</h3>
    </div>
-
-
   <script type="text/javascript">
   	showOverlays();
   </script>
-
-
     <div id="fb-root"></div>
     <script type="text/javascript">
       window.fbAsyncInit = function() {
@@ -462,17 +390,12 @@ function toggleBounce() {
       </div>
       <?php } ?>
     </header>
-
     <?php
       if ($user_id) {
     ?>
-
    </section>
-
     <?php
       }
     ?>
-
-
   </body>
 </html>
